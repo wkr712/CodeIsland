@@ -1,0 +1,54 @@
+{
+  "items": [
+    {
+      "id": "coin",
+      "name": "金币",
+      "description": "代码岛的通用货币，      "icon": "res://assets/sprites/items/coin.png",
+      "type": "currency",
+      "stackable": true,
+      "max_stack": 999
+    },
+    {
+      "id": "code_scroll",
+      "name": "代码卷轴",
+      "description": "记录着你编写过的代码，      "icon": "res://assets/sprites/items/scroll.png",
+      "type": "quest_item",
+      "stackable": true,
+      "max_stack": 10
+    },
+    {
+      "id": "python_feather",
+      "name": "Python羽毛",
+      "description": "传说中Python神鸟留下的羽毛，据说能带来好运",
+      "icon": "res://assets/sprites/items/feather.png",
+      "type": "collectible",
+      "stackable": true,
+      "max_stack": 99
+    },
+    {
+      "id": "debug_potion",
+      "name": "调试药水",
+      "description": "可以显示隐藏的错误信息",
+      "icon": "res://assets/sprites/items/potion.png",
+      "type": "consumable",
+      "stackable": true,
+      "max_stack": 5,
+      "effect": {
+        "type": "reveal_errors",
+        "duration": 30
+      }
+    },
+    {
+      "id": "magic_wand",
+      "name": "魔法棒",
+      "description": "可以执行简单的魔法代码",
+      "icon": "res://assets/sprites/items/wand.png",
+      "type": "tool",
+      "stackable": false,
+      "effect": {
+        "type": "code_power_boost",
+        "value": 1.5
+      }
+    }
+  ]
+}

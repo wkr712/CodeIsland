@@ -1,0 +1,108 @@
+{
+  "chapter": 1,
+  "chapter_title": "初入代码岛",
+  "chapter_description": "欢迎来到代码岛！在这里，你将开始你的Python编程之旅。学习变量的概念，了解数据类型，迈出编程的第一步。",
+  "lessons": [
+    {
+      "id": "lesson_1_1",
+      "title": "第一个变量",
+      "concept": "变量定义",
+      "description": "变量就像一个带标签的盒子，你可以在里面存放东西。让我们创建你的第一个变量！",
+      "starter_code": "# 创建一个名为 name 的变量，存储你的名字\n# 例如: name = \"小明\"\n\n",
+      "expected_output": "",
+      "validation": {
+        "type": "pattern",
+        "required_patterns": ["name = "],
+        "forbidden_patterns": [],
+        "check_execution": false
+      },
+      "hints": [
+        "变量就像一个标签，用来标记一个值",
+        "使用等号 = 来给变量赋值",
+        "字符串需要用引号包裹，如 \"hello\""
+      ],
+      "example_solution": "name = \"旅行者\"",
+      "xp_reward": 100
+    },
+    {
+      "id": "lesson_1_2",
+      "title": "数字的力量",
+      "concept": "数字类型",
+      "description": "Python可以处理不同类型的数字。让我们学习整数和浮点数。",
+      "starter_code": "# 创建一个整数变量 age，存储你的年龄\n# 创建一个浮点数变量 height，存储你的身高（米）\n\n",
+      "expected_output": "",
+      "validation": {
+        "type": "pattern",
+        "required_patterns": ["age = ", "height = "],
+        "required_types": ["int", "float"]
+      },
+      "hints": [
+        "整数是没有小数点的数字，如 25",
+        "浮点数是有小数点的数字，如 1.75",
+        "不需要引号包裹数字"
+      ],
+      "example_solution": "age = 25\nheight = 1.75",
+      "xp_reward": 100
+    },
+    {
+      "id": "lesson_1_3",
+      "title": "输出你的声音",
+      "concept": "print函数",
+      "description": "使用 print() 函数在屏幕上显示信息，这是与程序对话的第一步。",
+      "starter_code": "# 使用 print() 函数输出 \"Hello, Code Island!\"\n\n",
+      "expected_output": "Hello, Code Island!",
+      "validation": {
+        "type": "output",
+        "expected_output": "Hello, Code Island!",
+        "check_execution": true
+      },
+      "hints": [
+        "print() 函数会把括号里的内容显示在屏幕上",
+        "字符串需要用引号包裹",
+        "例如: print(\"你好\")"
+      ],
+      "example_solution": "print(\"Hello, Code Island!\")",
+      "xp_reward": 100
+    },
+    {
+      "id": "lesson_1_4",
+      "title": "变量的魔法",
+      "concept": "变量使用",
+      "description": "创建变量后，你可以在任何地方使用它！让我们用变量来构建一个问候语。",
+      "starter_code": "# 创建变量 name，存储你的名字\n# 然后使用 print() 输出 \"你好，[你的名字]！\"\n# 提示：使用逗号可以连接多个内容\n\n",
+      "expected_output": "",
+      "validation": {
+        "type": "pattern",
+        "required_patterns": ["name = ", "print("],
+        "required_variables": ["name"]
+      },
+      "hints": [
+        "先定义变量 name",
+        "print() 可以用逗号分隔多个内容",
+        "例如: print(\"你好，\", name)"
+      ],
+      "example_solution": "name = \"旅行者\"\nprint(\"你好，\", name)",
+      "xp_reward": 150
+    },
+    {
+      "id": "lesson_1_5",
+      "title": "真假之间",
+      "concept": "布尔类型",
+      "description": "布尔值只有两个：True（真）和 False（假）。它们在做判断时非常有用。",
+      "starter_code": "# 创建一个布尔变量 is_adult，表示你是否成年\n# 如果成年则为 True，否则为 False\n\n",
+      "expected_output": "",
+      "validation": {
+        "type": "pattern",
+        "required_patterns": ["is_adult = "],
+        "required_types": ["bool"]
+      },
+      "hints": [
+        "布尔值只有 True 或 False",
+        "注意首字母大写",
+        "不需要引号"
+      ],
+      "example_solution": "is_adult = True",
+      "xp_reward": 100
+    }
+  ]
+}

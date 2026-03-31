@@ -1,0 +1,137 @@
+[gd_scene load_steps=2 format=3 uid="uid://code_editor"]
+
+[ext_resource type="Script" path="res://scripts/ui/code_editor.gd" id="1_code_editor"]
+
+[node name="CodeEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_code_editor")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Panel/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "代码编辑器"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="Panel/VBox/Header"]
+layout_mode = 2
+text = "X"
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="TaskSection" type="VBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="TaskTitle" type="Label" parent="Panel/VBox/TaskSection"]
+layout_mode = 2
+text = "任务描述"
+
+[node name="TaskLabel" type="RichTextLabel" parent="Panel/VBox/TaskSection"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+bbcode_enabled = true
+text = "在这里编写你的Python代码完成任务"
+fit_content = true
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="CodeSection" type="VBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CodeTitle" type="Label" parent="Panel/VBox/CodeSection"]
+layout_mode = 2
+text = "Python 代码"
+
+[node name="CodeEdit" type="TextEdit" parent="Panel/VBox/CodeSection"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "# 在这里编写你的代码"
+wrap_mode = 1
+
+[node name="HSeparator3" type="HSeparator" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="OutputSection" type="VBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="OutputTitle" type="Label" parent="Panel/VBox/OutputSection"]
+layout_mode = 2
+text = "输出"
+
+[node name="OutputLabel" type="RichTextLabel" parent="Panel/VBox/OutputSection"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+bbcode_enabled = true
+text = ""
+fit_content = true
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel/VBox/OutputSection"]
+visible = false
+layout_mode = 2
+value = 50.0
+
+[node name="StatusLabel" type="Label" parent="Panel/VBox/OutputSection"]
+layout_mode = 2
+text = ""
+
+[node name="HSeparator4" type="HSeparator" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="ButtonBar" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="RunButton" type="Button" parent="Panel/VBox/ButtonBar"]
+layout_mode = 2
+text = "▶ 运行"
+
+[node name="SubmitButton" type="Button" parent="Panel/VBox/ButtonBar"]
+layout_mode = 2
+text = "✓ 提交"
+
+[node name="HintButton" type="Button" parent="Panel/VBox/ButtonBar"]
+layout_mode = 2
+text = "💡 提示"
+
+[node name="ClearButton" type="Button" parent="Panel/VBox/ButtonBar"]
+layout_mode = 2
+text = "🗑 清空"
+
+[connection signal="pressed" from="Panel/VBox/Header/CloseButton" to="." method="_on_close_pressed"]

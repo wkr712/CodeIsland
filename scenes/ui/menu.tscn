@@ -1,0 +1,107 @@
+[gd_scene load_steps=2 format=3 uid="uid://menu_scene"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu.gd" id="1_menu"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = CanvasTexture.new()
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("res://assets/sprites/ui/menu_bg.png")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.29, 0.56, 0.55, 1)
+theme_override_colors/font_size = 48
+text = "代码岛传奇"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_colors/font_size = 18
+text = "Python学习RPG游戏"
+horizontal_alignment = 1
+
+[node name="MenuButtons" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+separation = 10
+
+[node name="NewGameButton" type="Button" parent="VBoxContainer/MenuButtons"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "🎮 新游戏"
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer/MenuButtons"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "📂 继续游戏"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer/MenuButtons"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "⚙️ 设置"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer/MenuButtons"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "📜 制作人员"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer/MenuButtons"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "🚪 退出游戏"
+
+[node name="VersionLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = 10.0
+offset_top = 10.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+text = "v0.2.0"
+
+[node name="SaveSlotsContainer" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsPanel" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

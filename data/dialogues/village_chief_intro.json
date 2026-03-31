@@ -1,0 +1,59 @@
+{
+  "dialogue_id": "village_chief_intro",
+  "npc_id": "village_chief",
+  "trigger_condition": "first_meeting",
+  "dialogues": [
+    {
+      "speaker": "village_chief",
+      "speaker_name": "村长",
+      "portrait": "chief_happy",
+      "text": "欢迎来到代码岛，年轻的旅行者！",
+      "choices": []
+    },
+    {
+      "speaker": "player",
+      "speaker_name": "旅行者",
+      "portrait": "player_confused",
+      "text": "代码岛？这是什么地方？",
+      "choices": []
+    },
+    {
+      "speaker": "village_chief",
+      "speaker_name": "村长",
+      "portrait": "chief_normal",
+      "text": "这里是一个神奇的地方，岛上的一切都由代码控制。你看到的每一棵树、每一栋房子，都是由代码创造的！",
+      "choices": []
+    },
+    {
+      "speaker": "village_chief",
+      "speaker_name": "村长",
+      "portrait": "chief_happy",
+      "text": "而你，将学习如何使用代码来改变这个世界！Python就是我们使用的编程语言。",
+      "choices": []
+    },
+    {
+      "speaker": "player",
+      "speaker_name": "旅行者",
+      "portrait": "player_excited",
+      "text": "听起来很酷！我要怎么开始？",
+      "choices": []
+    },
+    {
+      "speaker": "village_chief",
+      "speaker_name": "村长",
+      "portrait": "chief_normal",
+      "text": "首先，你需要学习最基础的概念：变量。让我给你一个任务吧！",
+      "choices": [
+        {
+          "text": "好的，我准备好了！",
+          "next_dialogue": "village_chief_first_quest",
+          "action": "accept_quest:quest_1_1"
+        },
+        {
+          "text": "能再解释一下什么是变量吗？",
+          "next_dialogue": "village_chief_explain_variable"
+        }
+      ]
+    }
+  ]
+}
