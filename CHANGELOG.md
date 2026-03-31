@@ -12,6 +12,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.0] - 2026-03-24
+
+### Added
+- **GameManager**: 游戏状态管理、场景切换、玩家数据管理
+- **AudioManager**: 背景音乐和音效播放控制
+- **SaveManager**: 游戏存档/读取、设置管理、自动保存
+- **PythonExecutor**: Python代码执行器、安全检查、代码验证
+- **QuestSystem**: 任务管理、进度追踪、奖励发放
+- **PlayerData**: 玩家数据类 (等级、背包、成就等)
+- **CodeEditor**: 代码编辑器UI、语法高亮、运行/验证功能
+- **MainMenu**: 主菜单UI、新游戏/继续/设置按钮
+- 课程数据结构 (第1章5课)
+- 任务数据结构
+- 对话数据结构
+- 物品数据结构
+
+### Technical
+- 自动加载单例: GameManager, AudioManager, SaveManager, PythonExecutor
+- 场景结构: scenes/main.tscn, scenes/ui/menu.tscn, scenes/ui/code_editor.tscn
+- 数据文件格式: JSON
+
+---
+
 ## [0.1.0] - 2026-03-24
 
 ### Added
