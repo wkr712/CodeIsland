@@ -12,6 +12,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.4.0] - 2026-03-24
+
+### Added
+- **第1章课程**: 5个完整课程 (变量、数据类型、print函数、布尔值)
+- **第2章课程**: 6个完整课程 (算术运算符、整除取余、比较运算符、字符串操作)
+- **LessonPanel**: 课程选择UI界面
+- **LessonManager**: 课程管理和章节解锁系统
+
+### 课程内容
+#### 第1章: 初入代码岛
+- lesson_1_1: 第一个变量
+- lesson_1_2: 数字的力量
+- lesson_1_3: 输出你的声音
+- lesson_1_4: 变量的魔法
+- lesson_1_5: 真假之间
+
+#### 第2章: 商人的请求
+- lesson_2_1: 加减乘除
+- lesson_2_2: 整数除法
+- lesson_2_3: 比较大小
+- lesson_2_4: 字符串拼接
+- lesson_2_5: 字符串方法
+- lesson_2_6: 格式化字符串
+
+---
+
 ## [0.3.0] - 2026-03-24
 
 ### Added
