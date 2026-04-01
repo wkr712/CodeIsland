@@ -12,6 +12,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.5.0] - 2026-03-24
+
+### Added
+- **第3章课程**: 森林迷宫 - 5课 (if/elif/else、逻辑运算符、嵌套判断)
+- **第4章课程**: 矿工的秘密 - 6课 (for循环、while循环、列表操作、列表推导式)
+
+### 课程内容
+#### 第3章: 森林迷宫
+- lesson_3_1: 岔路口的选择 (if语句)
+- lesson_3_2: 多重选择 (elif语句)
+- lesson_3_3: 逻辑与或非 (and/or/not)
+- lesson_3_4: 嵌套判断 (嵌套if)
+- lesson_3_5: 森林宝箱 (综合练习)
+
+#### 第4章: 矿工的秘密
+- lesson_4_1: 数矿石 (for循环基础)
+- lesson_4_2: range的力量 (range函数)
+- lesson_4_3: 累加计算 (循环累加)
+- lesson_4_4: 持续挖掘 (while循环)
+- lesson_4_5: 列表操作 (append/remove/pop)
+- lesson_4_6: 矿石分类 (列表推导式)
+
+---
+
 ## [0.4.0] - 2026-03-24
 
 ### Added
