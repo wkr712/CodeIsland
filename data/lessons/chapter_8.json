@@ -1,0 +1,175 @@
+{
+  "chapter": 8,
+  "chapter_title": "岛屿守护者",
+  "chapter_description": "恭喜你完成了所有课程学习！现在是时候运用所学知识，完成最终项目，成为代码岛的守护者！",
+  "lessons": [
+    {
+      "id": "lesson_8_1",
+      "title": "项目规划",
+      "concept": "项目结构",
+      "description": "学习如何规划一个Python项目的结构。",
+      "story": "作为岛屿守护者，你需要创建一个完整的冒险游戏项目。",
+      "starter_code": "# 项目结构示例\n\"\"\"\nadventure_game/\n├── main.py          # 程序入口\n├── player.py        # 玩家模块\n├── enemy.py         # 敌人模块\n├── items.py         # 物品模块\n├── battle.py        # 战斗模块\n└── utils.py         # 工具函数\n\"\"\"\n\n# main.py - 程序入口\nprint(\"=== 代码岛冒险游戏 ===\")\nprint(\"项目结构设计完成！\")\nprint(\"\\n模块分工:\")\nprint(\"- main.py: 游戏主循环\")\nprint(\"- player.py: 玩家角色\")\nprint(\"- enemy.py: 敌人系统\")\nprint(\"- items.py: 物品背包\")\nprint(\"- battle.py: 战斗系统\")\nprint(\"- utils.py: 工具函数\")\n",
+      "expected_output": "=== 代码岛冒险游戏 ===\n项目结构设计完成！\n\n模块分工:\n- main.py: 游戏主循环\n- player.py: 玩家角色\n- enemy.py: 敌人系统\n- items.py: 物品背包\n- battle.py: 战斗系统\n- utils.py: 工具函数",
+      "validation": {
+        "type": "pattern",
+        "required_patterns": ["print"],
+        "check_execution": true
+      },
+      "hints": [
+        "项目需要清晰的模块划分",
+        "每个文件负责一个功能",
+        "main.py 作为入口"
+      ],
+      "example_solution": "print(\"=== 代码岛冒险游戏 ===\")\nprint(\"项目结构设计完成！\")\nprint(\"\\n模块分工:\")\nprint(\"- main.py: 游戏主循环\")\nprint(\"- player.py: 玩家角色\")\nprint(\"- enemy.py: 敌人系统\")\nprint(\"- items.py: 物品背包\")\nprint(\"- battle.py: 战斗系统\")\nprint(\"- utils.py: 工具函数\")",
+      "xp_reward": 100
+    },
+    {
+      "id": "lesson_8_2",
+      "title": "玩家系统",
+      "concept": "类设计实践",
+      "description": "设计并实现完整的玩家类。",
+      "story": "创建功能完整的玩家角色系统。",
+      "starter_code": "# 玩家类\nclass Player:\n    def __init__(self, name):\n        self.name = name\n        self.level = 1\n        self.hp = 100\n        self.max_hp = 100\n        self.attack = 15\n        self.defense = 5\n        self.exp = 0\n        self.gold = 0\n        self.inventory = []\n    \n    def take_damage(self, damage):\n        actual = max(0, damage - self.defense)\n        self.hp -= actual\n        return actual\n    \n    def heal(self, amount):\n        self.hp = min(self.max_hp, self.hp + amount)\n    \n    def gain_exp(self, amount):\n        self.exp += amount\n        while self.exp >= 100:\n            self.level_up()\n    \n    def level_up(self):\n        self.level += 1\n        self.exp -= 100\n        self.max_hp += 20\n        self.hp = self.max_hp\n        self.attack += 3\n        self.defense += 2\n        print(f\"🎉 {self.name} 升级到 Lv.{self.level}!\")\n    \n    def add_item(self, item):\n        self.inventory.append(item)\n    \n    def status(self):\n        return f\"{self.name} Lv.{self.level} HP:{self.hp}/{self.max_hp} ATK:{self.attack} DEF:{self.defense}\"\n\n# 测试玩家系统\nhero = Player(\"旅行者\")\nprint(hero.status())\nhero.gain_exp(100)\nprint(hero.status())\nhero.add_item(\"魔法剑\")\nprint(f\"背包: {hero.inventory}\")\n",
+      "expected_output": "旅行者 Lv.1 HP:100/100 ATK:15 DEF:5\n🎉 旅行者 升级到 Lv.2!\n旅行者 Lv.2 HP:120/120 ATK:18 DEF:7\n背包: ['魔法剑']",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["class", "def", "self"],
+        "check_execution": true
+      },
+      "hints": [
+        "用类封装玩家所有数据",
+        "方法实现各种功能",
+        "升级时提升属性"
+      ],
+      "example_solution": "class Player:\n    def __init__(self, name):\n        self.name = name\n        self.level = 1\n        self.hp = 100\n        self.max_hp = 100\n        self.attack = 15\n        self.defense = 5\n        self.exp = 0\n        self.gold = 0\n        self.inventory = []\n    def take_damage(self, damage):\n        actual = max(0, damage - self.defense)\n        self.hp -= actual\n        return actual\n    def heal(self, amount):\n        self.hp = min(self.max_hp, self.hp + amount)\n    def gain_exp(self, amount):\n        self.exp += amount\n        while self.exp >= 100:\n            self.level_up()\n    def level_up(self):\n        self.level += 1\n        self.exp -= 100\n        self.max_hp += 20\n        self.hp = self.max_hp\n        self.attack += 3\n        self.defense += 2\n        print(f\"🎉 {self.name} 升级到 Lv.{self.level}!\")\n    def add_item(self, item):\n        self.inventory.append(item)\n    def status(self):\n        return f\"{self.name} Lv.{self.level} HP:{self.hp}/{self.max_hp} ATK:{self.attack} DEF:{self.defense}\"\nhero = Player(\"旅行者\")\nprint(hero.status())\nhero.gain_exp(100)\nprint(hero.status())\nhero.add_item(\"魔法剑\")\nprint(f\"背包: {hero.inventory}\")",
+      "xp_reward": 300
+    },
+    {
+      "id": "lesson_8_3",
+      "title": "敌人系统",
+      "concept": "敌人类设计",
+      "description": "创建不同类型的敌人。",
+      "story": "设计多种敌人，每种有不同特点。",
+      "starter_code": "# 敌人类\nclass Enemy:\n    def __init__(self, name, hp, attack, exp_reward, gold_reward):\n        self.name = name\n        self.hp = hp\n        self.max_hp = hp\n        self.attack = attack\n        self.exp_reward = exp_reward\n        self.gold_reward = gold_reward\n    \n    def is_alive(self):\n        return self.hp > 0\n    \n    def take_damage(self, damage):\n        self.hp -= damage\n        return damage\n\n# 创建敌人模板\ndef create_slime():\n    return Enemy(\"史莱姆\", 30, 8, 15, 10)\n\ndef create_goblin():\n    return Enemy(\"哥布林\", 50, 12, 30, 25)\n\ndef create_dragon():\n    return Enemy(\"巨龙\", 200, 25, 100, 200)\n\n# 测试\nenemies = [create_slime(), create_goblin(), create_dragon()]\nprint(\"=== 敌人列表 ===\")\nfor enemy in enemies:\n    print(f\"{enemy.name}: HP={enemy.hp} ATK={enemy.attack} EXP={enemy.exp_reward} GOLD={enemy.gold_reward}\")\n",
+      "expected_output": "=== 敌人列表 ===\n史莱姆: HP=30 ATK=8 EXP=15 GOLD=10\n哥布林: HP=50 ATK=12 EXP=30 GOLD=25\n巨龙: HP=200 ATK=25 EXP=100 GOLD=200",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["class", "Enemy", "def create"],
+        "check_execution": true
+      },
+      "hints": [
+        "用工厂函数创建敌人",
+        "每个敌人有独特属性",
+        "is_alive检查存活状态"
+      ],
+      "example_solution": "class Enemy:\n    def __init__(self, name, hp, attack, exp_reward, gold_reward):\n        self.name = name\n        self.hp = hp\n        self.max_hp = hp\n        self.attack = attack\n        self.exp_reward = exp_reward\n        self.gold_reward = gold_reward\n    def is_alive(self):\n        return self.hp > 0\n    def take_damage(self, damage):\n        self.hp -= damage\n        return damage\ndef create_slime():\n    return Enemy(\"史莱姆\", 30, 8, 15, 10)\ndef create_goblin():\n    return Enemy(\"哥布林\", 50, 12, 30, 25)\ndef create_dragon():\n    return Enemy(\"巨龙\", 200, 25, 100, 200)\nenemies = [create_slime(), create_goblin(), create_dragon()]\nprint(\"=== 敌人列表 ===\")\nfor enemy in enemies:\n    print(f\"{enemy.name}: HP={enemy.hp} ATK={enemy.attack} EXP={enemy.exp_reward} GOLD={enemy.gold_reward}\")",
+      "xp_reward": 300
+    },
+    {
+      "id": "lesson_8_4",
+      "title": "战斗系统",
+      "concept": "战斗逻辑",
+      "description": "实现回合制战斗系统。",
+      "story": "让玩家和敌人能够进行战斗！",
+      "starter_code": "# 战斗系统\nimport random\n\nclass Battle:\n    def __init__(self, player, enemy):\n        self.player = player\n        self.enemy = enemy\n        self.turn = 0\n    \n    def player_attack(self):\n        damage = random.randint(self.player.attack - 3, self.player.attack + 3)\n        actual = self.enemy.take_damage(damage)\n        print(f\"⚔️ {self.player.name} 攻击 {self.enemy.name}，造成 {actual} 伤害！\")\n        return not self.enemy.is_alive()\n    \n    def enemy_attack(self):\n        damage = random.randint(self.enemy.attack - 2, self.enemy.attack + 2)\n        actual = self.player.take_damage(damage)\n        print(f\"💥 {self.enemy.name} 攻击 {self.player.name}，造成 {actual} 伤害！\")\n        return not self.player.hp > 0\n    \n    def execute(self):\n        print(f\"\\n⚔️ 战斗开始！{self.player.name} VS {self.enemy.name}\")\n        while self.player.hp > 0 and self.enemy.is_alive():\n            self.turn += 1\n            print(f\"\\n--- 第 {self.turn} 回合 ---\")\n            if self.player_attack():\n                print(f\"🏆 {self.player.name} 获胜！\")\n                self.player.gain_exp(self.enemy.exp_reward)\n                self.player.gold += self.enemy.gold_reward\n                return True\n            if self.enemy_attack():\n                print(f\"💔 {self.player.name} 被击败...\")\n                return False\n            print(f\"{self.player.name} HP:{self.player.hp} | {self.enemy.name} HP:{self.enemy.hp}\")\n        return self.player.hp > 0\n\n# 简化测试（使用上面的类）\nprint(\"战斗系统设计完成！\")\nprint(\"功能包括：回合制战斗、伤害计算、胜负判定、奖励发放\")\n",
+      "expected_output": "战斗系统设计完成！\n功能包括：回合制战斗、伤害计算、胜负判定、奖励发放",
+      "validation": {
+        "type": "pattern",
+        "required_patterns": ["class", "Battle", "def"],
+        "check_execution": true
+      },
+      "hints": [
+        "回合制：玩家先攻，敌人反击",
+        "随机伤害增加趣味性",
+        "战斗结束发放奖励"
+      ],
+      "example_solution": "import random\nclass Battle:\n    def __init__(self, player, enemy):\n        self.player = player\n        self.enemy = enemy\n        self.turn = 0\n    def player_attack(self):\n        damage = random.randint(self.player.attack - 3, self.player.attack + 3)\n        actual = self.enemy.take_damage(damage)\n        print(f\"⚔️ {self.player.name} 攻击 {self.enemy.name}，造成 {actual} 伤害！\")\n        return not self.enemy.is_alive()\n    def enemy_attack(self):\n        damage = random.randint(self.enemy.attack - 2, self.enemy.attack + 2)\n        actual = self.player.take_damage(damage)\n        print(f\"💥 {self.enemy.name} 攻击 {self.player.name}，造成 {actual} 伤害！\")\n        return not self.player.hp > 0\n    def execute(self):\n        print(f\"\\n⚔️ 战斗开始！{self.player.name} VS {self.enemy.name}\")\n        while self.player.hp > 0 and self.enemy.is_alive():\n            self.turn += 1\n            print(f\"\\n--- 第 {self.turn} 回合 ---\")\n            if self.player_attack():\n                print(f\"🏆 {self.player.name} 获胜！\")\n                self.player.gain_exp(self.enemy.exp_reward)\n                self.player.gold += self.enemy.gold_reward\n                return True\n            if self.enemy_attack():\n                print(f\"💔 {self.player.name} 被击败...\")\n                return False\n        return self.player.hp > 0\nprint(\"战斗系统设计完成！\")\nprint(\"功能包括：回合制战斗、伤害计算、胜负判定、奖励发放\")",
+      "xp_reward": 350
+    },
+    {
+      "id": "lesson_8_5",
+      "title": "存档系统",
+      "concept": "游戏存档",
+      "description": "实现游戏数据的保存和加载。",
+      "story": "让玩家可以保存游戏进度。",
+      "starter_code": "# 存档系统\nimport json\n\nclass SaveManager:\n    @staticmethod\n    def save(player, filename=\"save.json\"):\n        data = {\n            \"name\": player.name,\n            \"level\": player.level,\n            \"hp\": player.hp,\n            \"max_hp\": player.max_hp,\n            \"attack\": player.attack,\n            \"defense\": player.defense,\n            \"exp\": player.exp,\n            \"gold\": player.gold,\n            \"inventory\": player.inventory\n        }\n        json_str = json.dumps(data, indent=2)\n        print(f\"💾 存档保存成功！\")\n        return json_str\n    \n    @staticmethod\n    def load(json_str):\n        data = json.loads(json_str)\n        player = Player(data[\"name\"])\n        player.level = data[\"level\"]\n        player.hp = data[\"hp\"]\n        player.max_hp = data[\"max_hp\"]\n        player.attack = data[\"attack\"]\n        player.defense = data[\"defense\"]\n        player.exp = data[\"exp\"]\n        player.gold = data[\"gold\"]\n        player.inventory = data[\"inventory\"]\n        print(f\"📂 存档加载成功！\")\n        return player\n\n# 测试存档系统\nhero = Player(\"旅行者\")\nhero.gain_exp(150)\nhero.gold = 100\nhero.inventory = [\"魔法剑\", \"治疗药水\"]\n\nprint(\"=== 保存前 ===\")\nprint(hero.status())\nprint(f\"金币: {hero.gold}\")\nprint(f\"背包: {hero.inventory}\")\n\nsave_data = SaveManager.save(hero)\nprint(\"\\n存档数据:\")\nprint(save_data)\n",
+      "expected_output": "=== 保存前 ===\n🎉 旅行者 升级到 Lv.2!\n旅行者 Lv.2 HP:120/120 ATK:18 DEF:7\n金币: 100\n背包: ['魔法剑', '治疗药水']\n💾 存档保存成功！\n\n存档数据:\n{\n  \"name\": \"旅行者\",\n  \"level\": 2,\n  \"hp\": 120,\n  \"max_hp\": 120,\n  \"attack\": 18,\n  \"defense\": 7,\n  \"exp\": 50,\n  \"gold\": 100,\n  \"inventory\": [\n    \"魔法剑\",\n    \"治疗药水\"\n  ]\n}",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["json", "dumps", "loads"],
+        "check_execution": true
+      },
+      "hints": [
+        "用JSON保存玩家数据",
+        "dumps序列化，loads反序列化",
+        "静态方法方便调用"
+      ],
+      "example_solution": "import json\nclass SaveManager:\n    @staticmethod\n    def save(player, filename=\"save.json\"):\n        data = {\"name\": player.name, \"level\": player.level, \"hp\": player.hp, \"max_hp\": player.max_hp, \"attack\": player.attack, \"defense\": player.defense, \"exp\": player.exp, \"gold\": player.gold, \"inventory\": player.inventory}\n        json_str = json.dumps(data, indent=2)\n        print(f\"💾 存档保存成功！\")\n        return json_str\n    @staticmethod\n    def load(json_str):\n        data = json.loads(json_str)\n        player = Player(data[\"name\"])\n        player.level = data[\"level\"]\n        player.hp = data[\"hp\"]\n        player.max_hp = data[\"max_hp\"]\n        player.attack = data[\"attack\"]\n        player.defense = data[\"defense\"]\n        player.exp = data[\"exp\"]\n        player.gold = data[\"gold\"]\n        player.inventory = data[\"inventory\"]\n        print(f\"📂 存档加载成功！\")\n        return player\nhero = Player(\"旅行者\")\nhero.gain_exp(150)\nhero.gold = 100\nhero.inventory = [\"魔法剑\", \"治疗药水\"]\nprint(\"=== 保存前 ===\")\nprint(hero.status())\nprint(f\"金币: {hero.gold}\")\nprint(f\"背包: {hero.inventory}\")\nsave_data = SaveManager.save(hero)\nprint(\"\\n存档数据:\")\nprint(save_data)",
+      "xp_reward": 350
+    },
+    {
+      "id": "lesson_8_6",
+      "title": "游戏主循环",
+      "concept": "游戏循环",
+      "description": "把所有系统组合起来，创建完整的游戏循环。",
+      "story": "让游戏运行起来！",
+      "starter_code": "# 简化的游戏主循环\ndef game_loop():\n    print(\"=== 代码岛冒险 ===\")\n    print(\"1. 开始冒险\")\n    print(\"2. 查看状态\")\n    print(\"3. 退出游戏\")\n    \n    while True:\n        choice = input(\"\\n选择操作 (1-3): \")\n        \n        if choice == \"1\":\n            print(\"开始冒险...\")\n            # 这里可以加入战斗逻辑\n        elif choice == \"2\":\n            print(\"查看状态...\")\n            # 显示玩家状态\n        elif choice == \"3\":\n            print(\"感谢游玩！\")\n            break\n        else:\n            print(\"无效选择\")\n\n# 模拟输入测试\nprint(\"游戏主循环设计完成！\")\nprint(\"\\n包含功能:\")\nprint(\"- 菜单显示\")\nprint(\"- 用户输入处理\")\nprint(\"- 无限循环直到退出\")\nprint(\"- 错误处理\")\n",
+      "expected_output": "游戏主循环设计完成！\n\n包含功能:\n- 菜单显示\n- 用户输入处理\n- 无限循环直到退出\n- 错误处理",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["while", "input", "if"],
+        "check_execution": true
+      },
+      "hints": [
+        "while True 创建无限循环",
+        "input() 获取用户输入",
+        "break 退出循环"
+      ],
+      "example_solution": "def game_loop():\n    print(\"=== 代码岛冒险 ===\")\n    print(\"1. 开始冒险\")\n    print(\"2. 查看状态\")\n    print(\"3. 退出游戏\")\n    while True:\n        choice = input(\"\\n选择操作 (1-3): \")\n        if choice == \"1\":\n            print(\"开始冒险...\")\n        elif choice == \"2\":\n            print(\"查看状态...\")\n        elif choice == \"3\":\n            print(\"感谢游玩！\")\n            break\n        else:\n            print(\"无效选择\")\nprint(\"游戏主循环设计完成！\")\nprint(\"\\n包含功能:\")\nprint(\"- 菜单显示\")\nprint(\"- 用户输入处理\")\nprint(\"- 无限循环直到退出\")\nprint(\"- 错误处理\")",
+      "xp_reward": 400
+    },
+    {
+      "id": "lesson_8_7",
+      "title": "守护者试炼",
+      "concept": "综合项目",
+      "description": "综合所有知识，完成最终的冒险游戏！",
+      "story": "现在，把所有模块组合起来，创建一个完整的文字冒险游戏！",
+      "starter_code": "# ========== 完整冒险游戏 ==========\n# 组合所有模块\n\n# --- 玩家类 ---\nclass Player:\n    def __init__(self, name):\n        self.name = name\n        self.level = 1\n        self.hp = 100\n        self.max_hp = 100\n        self.attack = 15\n        self.defense = 5\n        self.exp = 0\n        self.gold = 0\n    \n    def status(self):\n        return f\"{self.name} Lv.{self.level} HP:{self.hp}/{self.max_hp}\"\n    \n    def take_damage(self, dmg):\n        actual = max(0, dmg - self.defense)\n        self.hp -= actual\n        return actual\n    \n    def is_alive(self):\n        return self.hp > 0\n\n# --- 敌人类 ---\nclass Enemy:\n    def __init__(self, name, hp, atk):\n        self.name = name\n        self.hp = hp\n        self.attack = atk\n    \n    def is_alive(self):\n        return self.hp > 0\n\n# --- 战斗函数 ---\ndef battle(player, enemy):\n    print(f\"⚔️ 战斗: {player.name} VS {enemy.name}\")\n    while player.is_alive() and enemy.is_alive():\n        enemy.hp -= player.attack\n        print(f\"{player.name} 攻击！敌人HP: {max(0, enemy.hp)}\")\n        if not enemy.is_alive():\n            print(f\"🏆 胜利！\")\n            return True\n        player.take_damage(enemy.attack)\n        print(f\"敌人反击！{player.name} HP: {player.hp}\")\n    return False\n\n# --- 游戏开始 ---\nprint(\"=\"*40)\nprint(\"🏝️ 代码岛传奇 - 守护者试炼\")\nprint(\"=\"*40)\n\nhero = Player(\"旅行者\")\nprint(f\"\\n欢迎，{hero.name}！\")\nprint(f\"状态: {hero.status()}\")\n\n# 战斗测试\nslime = Enemy(\"史莱姆\", 30, 8)\nbattle(hero, slime)\n\nprint(f\"\\n最终状态: {hero.status()}\")\nprint(\"\\n🎉 恭喜完成守护者试炼！\")\nprint(\"你已经掌握了Python编程的精髓！\")\n",
+      "expected_output": "========================================\n🏝️ 代码岛传奇 - 守护者试炼\n========================================\n\n欢迎，旅行者！\n状态: 旅行者 Lv.1 HP:100/100\n\n⚔️ 战斗: 旅行者 VS 史莱姆\n旅行者 攻击！敌人HP: 15\n敌人反击！旅行者 HP: 97\n旅行者 攻击！敌人HP: 0\n🏆 胜利！\n\n最终状态: 旅行者 Lv.1 HP:97/100\n\n🎉 恭喜完成守护者试炼！\n你已经掌握了Python编程的精髓！",
+      "validation": {
+        "type": "output",
+        "expected_output": "========================================\n🏝️ 代码岛传奇 - 守护者试炼\n========================================\n\n欢迎，旅行者！\n状态: 旅行者 Lv.1 HP:100/100\n\n⚔️ 战斗: 旅行者 VS 史莱姆\n旅行者 攻击！敌人HP: 15\n敌人反击！旅行者 HP: 97\n旅行者 攻击！敌人HP: 0\n🏆 胜利！\n\n最终状态: 旅行者 Lv.1 HP:97/100\n\n🎉 恭喜完成守护者试炼！\n你已经掌握了Python编程的精髓！",
+        "check_execution": true
+      },
+      "hints": [
+        "组合所有模块",
+        "创建完整游戏流程",
+        "这是你的毕业作品！"
+      ],
+      "example_solution": "class Player:\n    def __init__(self, name):\n        self.name = name\n        self.level = 1\n        self.hp = 100\n        self.max_hp = 100\n        self.attack = 15\n        self.defense = 5\n        self.exp = 0\n        self.gold = 0\n    def status(self):\n        return f\"{self.name} Lv.{self.level} HP:{self.hp}/{self.max_hp}\"\n    def take_damage(self, dmg):\n        actual = max(0, dmg - self.defense)\n        self.hp -= actual\n        return actual\n    def is_alive(self):\n        return self.hp > 0\nclass Enemy:\n    def __init__(self, name, hp, atk):\n        self.name = name\n        self.hp = hp\n        self.attack = atk\n    def is_alive(self):\n        return self.hp > 0\ndef battle(player, enemy):\n    print(f\"⚔️ 战斗: {player.name} VS {enemy.name}\")\n    while player.is_alive() and enemy.is_alive():\n        enemy.hp -= player.attack\n        print(f\"{player.name} 攻击！敌人HP: {max(0, enemy.hp)}\")\n        if not enemy.is_alive():\n            print(f\"🏆 胜利！\")\n            return True\n        player.take_damage(enemy.attack)\n        print(f\"敌人反击！{player.name} HP: {player.hp}\")\n    return False\nprint(\"=\"*40)\nprint(\"🏝️ 代码岛传奇 - 守护者试炼\")\nprint(\"=\"*40)\nhero = Player(\"旅行者\")\nprint(f\"\\n欢迎，{hero.name}！\")\nprint(f\"状态: {hero.status()}\")\nslime = Enemy(\"史莱姆\", 30, 8)\nbattle(hero, slime)\nprint(f\"\\n最终状态: {hero.status()}\")\nprint(\"\\n🎉 恭喜完成守护者试炼！\")\nprint(\"你已经掌握了Python编程的精髓！\")",
+      "xp_reward": 500
+    },
+    {
+      "id": "lesson_8_8",
+      "title": "毕业典礼",
+      "concept": "项目总结",
+      "description": "回顾你学到的所有知识，准备开始你的编程之旅！",
+      "story": "代码岛的所有居民为你举办毕业典礼，庆祝你成为真正的程序员！",
+      "starter_code": "# ========== 毕业总结 ==========\n\nprint(\"🎉🎉🎉 毕业典礼 🎉🎉🎉\")\nprint(\"\\n\" + \"=\"*50)\nprint(\"恭喜你完成了代码岛的全部课程！\")\nprint(\"=\"*50)\n\nprint(\"\\n📚 你已经掌握了:\")\nprint(\"  ✓ 变量和数据类型\")\nprint(\"  ✓ 运算符和字符串操作\")\nprint(\"  ✓ 条件判断\")\nprint(\"  ✓ 循环和列表\")\nprint(\"  ✓ 函数定义\")\nprint(\"  ✓ 面向对象编程\")\nprint(\"  ✓ 文件操作和异常处理\")\nprint(\"  ✓ 项目开发\")\n\nprint(\"\\n🎮 项目成果:\")\nprint(\"  - 完整的玩家系统\")\nprint(\"  - 敌人和战斗系统\")\nprint(\"  - 存档系统\")\nprint(\"  - 文字冒险游戏\")\n\nprint(\"\\n🚀 下一步建议:\")\nprint(\"  1. 继续完善你的游戏\")\nprint(\"  2. 学习更多Python库\")\nprint(\"  3. 尝试Web开发、数据分析等方向\")\nprint(\"  4. 加入开源社区\")\n\nprint(\"\\n\" + \"=\"*50)\nprint(\"🌟 代码岛永远欢迎你！🌟\")\nprint(\"=\"*50)\n\nprint(\"\\n输入你的毕业宣言:\")\n# graduation_oath = input(\"> \")\nprint(\"\\n旅行者说: 我要用代码改变世界！\")\nprint(\"\\n🎊 毕业快乐！🎊\")\n",
+      "expected_output": "🎉🎉🎉 毕业典礼 🎉🎉🎉\n\n==================================================\n恭喜你完成了代码岛的全部课程！\n==================================================\n\n📚 你已经掌握了:\n  ✓ 变量和数据类型\n  ✓ 运算符和字符串操作\n  ✓ 条件判断\n  ✓ 循环和列表\n  ✓ 函数定义\n  ✓ 面向对象编程\n  ✓ 文件操作和异常处理\n  ✓ 项目开发\n\n🎮 项目成果:\n  - 完整的玩家系统\n  - 敌人和战斗系统\n  - 存档系统\n  - 文字冒险游戏\n\n🚀 下一步建议:\n  1. 继续完善你的游戏\n  2. 学习更多Python库\n  3. 尝试Web开发、数据分析等方向\n  4. 加入开源社区\n\n==================================================\n🌟 代码岛永远欢迎你！🌟\n==================================================\n\n输入你的毕业宣言:\n\n旅行者说: 我要用代码改变世界！\n\n🎊 毕业快乐！🎊",
+      "validation": {
+        "type": "output",
+        "expected_output": "🎉🎉🎉 毕业典礼 🎉🎉🎉\n\n==================================================\n恭喜你完成了代码岛的全部课程！\n==================================================\n\n📚 你已经掌握了:\n  ✓ 变量和数据类型\n  ✓ 运算符和字符串操作\n  ✓ 条件判断\n  ✓ 循环和列表\n  ✓ 函数定义\n  ✓ 面向对象编程\n  ✓ 文件操作和异常处理\n  ✓ 项目开发\n\n🎮 项目成果:\n  - 完整的玩家系统\n  - 敌人和战斗系统\n  - 存档系统\n  - 文字冒险游戏\n\n🚀 下一步建议:\n  1. 继续完善你的游戏\n  2. 学习更多Python库\n  3. 尝试Web开发、数据分析等方向\n  4. 加入开源社区\n\n==================================================\n🌟 代码岛永远欢迎你！🌟\n==================================================\n\n输入你的毕业宣言:\n\n旅行者说: 我要用代码改变世界！\n\n🎊 毕业快乐！🎊",
+        "check_execution": true
+      },
+      "hints": [
+        "回顾所有学到的知识",
+        "这是你的毕业证书！",
+        "继续你的编程之旅！"
+      ],
+      "example_solution": "print(\"🎉🎉🎉 毕业典礼 🎉🎉🎉\")\nprint(\"\\n\" + \"=\"*50)\nprint(\"恭喜你完成了代码岛的全部课程！\")\nprint(\"=\"*50)\nprint(\"\\n📚 你已经掌握了:\")\nprint(\"  ✓ 变量和数据类型\")\nprint(\"  ✓ 运算符和字符串操作\")\nprint(\"  ✓ 条件判断\")\nprint(\"  ✓ 循环和列表\")\nprint(\"  ✓ 函数定义\")\nprint(\"  ✓ 面向对象编程\")\nprint(\"  ✓ 文件操作和异常处理\")\nprint(\"  ✓ 项目开发\")\nprint(\"\\n🎮 项目成果:\")\nprint(\"  - 完整的玩家系统\")\nprint(\"  - 敌人和战斗系统\")\nprint(\"  - 存档系统\")\nprint(\"  - 文字冒险游戏\")\nprint(\"\\n🚀 下一步建议:\")\nprint(\"  1. 继续完善你的游戏\")\nprint(\"  2. 学习更多Python库\")\nprint(\"  3. 尝试Web开发、数据分析等方向\")\nprint(\"  4. 加入开源社区\")\nprint(\"\\n\" + \"=\"*50)\nprint(\"🌟 代码岛永远欢迎你！🌟\")\nprint(\"=\"*50)\nprint(\"\\n输入你的毕业宣言:\")\nprint(\"\\n旅行者说: 我要用代码改变世界！\")\nprint(\"\\n🎊 毕业快乐！🎊\")",
+      "xp_reward": 1000
+    }
+  ]
+}

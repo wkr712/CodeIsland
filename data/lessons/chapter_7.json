@@ -1,0 +1,112 @@
+{
+  "chapter": 7,
+  "chapter_title": "图书管理员",
+  "chapter_description": "在代码岛的古老图书馆，学习文件操作、异常处理和模块使用。这些技能让你能够保存数据、处理错误，并使用强大的Python模块！",
+  "lessons": [
+    {
+      "id": "lesson_7_1",
+      "title": "古老的卷轴",
+      "concept": "文件读取",
+      "description": "学习读取文件内容，就像打开古老的卷轴一样。",
+      "story": "图书管理员让你帮忙读取一本古老的魔法书。",
+      "starter_code": "# 读取文件\n# 注意：这是模拟环境，我们用字符串模拟文件内容\n\nfile_content = \"\"\"火球术 - 造成50点火焰伤害\n冰霜术 - 造成50点冰冻伤害\n雷电术 - 造成50点雷电伤害\"\"\"\n\n# 模拟读取文件\n# 在真实环境中：with open(\"spells.txt\", \"r\") as f:\n#                 content = f.read()\n\nlines = file_content.split(\"\\n\")\nprint(\"=== 魔法书内容 ===\")\nfor i, line in enumerate(lines, 1):\n    print(f\"{i}. {line}\")\n\nprint(f\"\\n共有 {len(lines)} 个魔法\")\n",
+      "expected_output": "=== 魔法书内容 ===\n1. 火球术 - 造成50点火焰伤害\n2. 冰霜术 - 造成50点冰冻伤害\n3. 雷电术 - 造成50点雷电伤害\n\n共有 3 个魔法",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["split", "for", "len"],
+        "check_execution": true
+      },
+      "hints": [
+        "split('\\n') 按行分割",
+        "enumerate(list, 1) 从1开始编号",
+        "len() 获取长度"
+      ],
+      "example_solution": "file_content = \"\"\"火球术 - 造成50点火焰伤害\n冰霜术 - 造成50点冰冻伤害\n雷电术 - 造成50点雷电伤害\"\"\"\nlines = file_content.split(\"\\n\")\nprint(\"=== 魔法书内容 ===\")\nfor i, line in enumerate(lines, 1):\n    print(f\"{i}. {line}\")\nprint(f\"\\n共有 {len(lines)} 个魔法\")",
+      "xp_reward": 200
+    },
+    {
+      "id": "lesson_7_2",
+      "title": "记录魔法",
+      "concept": "文件写入",
+      "description": "学习写入文件，保存你的魔法记录。",
+      "story": "把你学会的魔法记录到魔法书中。",
+      "starter_code": "# 模拟写入文件\n# 真实环境：with open(\"my_spells.txt\", \"w\") as f:\n#             f.write(content)\n\n# 准备要写入的内容\nspells = [\n    \"小火球 - 基础火焰魔法\",\n    \"冰锥术 - 冰系攻击\",\n    \"闪电网 - 雷电攻击\"\n]\n\n# 模拟写入过程\noutput = \"\\n\".join(spells)\nprint(\"=== 写入魔法书 ===\")\nprint(output)\nprint(\"\\n魔法记录保存成功！\")\n\n# 模拟追加内容\nnew_spell = \"治愈术 - 恢复生命值\"\noutput = output + \"\\n\" + new_spell\nprint(\"\\n=== 更新后的魔法书 ===\")\nprint(output)\n",
+      "expected_output": "=== 写入魔法书 ===\n小火球 - 基础火焰魔法\n冰锥术 - 冰系攻击\n闪电网 - 雷电攻击\n\n魔法记录保存成功！\n\n=== 更新后的魔法书 ===\n小火球 - 基础火焰魔法\n冰锥术 - 冰系攻击\n闪电网 - 雷电攻击\n治愈术 - 恢复生命值",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["join", "print"],
+        "check_execution": true
+      },
+      "hints": [
+        "\"\\n\".join(list) 用换行连接",
+        "+ 可以拼接字符串",
+        "追加用 'a' 模式"
+      ],
+      "example_solution": "spells = [\"小火球 - 基础火焰魔法\", \"冰锥术 - 冰系攻击\", \"闪电网 - 雷电攻击\"]\noutput = \"\\n\".join(spells)\nprint(\"=== 写入魔法书 ===\")\nprint(output)\nprint(\"\\n魔法记录保存成功！\")\nnew_spell = \"治愈术 - 恢复生命值\"\noutput = output + \"\\n\" + new_spell\nprint(\"\\n=== 更新后的魔法书 ===\")\nprint(output)",
+      "xp_reward": 200
+    },
+    {
+      "id": "lesson_7_3",
+      "title": "防护结界",
+      "concept": "try/except异常处理",
+      "description": "异常处理可以防止程序崩溃，就像防护结界保护你一样。",
+      "story": "魔法实验可能会出错，用异常处理来保护自己。",
+      "starter_code": "# 异常处理\ndef divide_mana(a, b):\n    try:\n        result = a / b\n        print(f\"魔力分配: {a} / {b} = {result}\")\n        return result\n    except ZeroDivisionError:\n        print(\"⚠️ 错误：不能除以零！\")\n        return 0\n    except Exception as e:\n        print(f\"⚠️ 未知错误: {e}\")\n        return 0\n\n# 测试\ndivide_mana(100, 5)\ndivide_mana(50, 2)\ndivide_mana(100, 0)  # 这会触发异常\n\ndef cast_spell(spell_name, power):\n    try:\n        if power < 0:\n            raise ValueError(\"魔力值不能为负数！\")\n        print(f\"施展 {spell_name}，消耗 {power} 魔力\")\n    except ValueError as e:\n        print(f\"⚠️ 施法失败: {e}\")\n\ncast_spell(\"火球术\", 30)\ncast_spell(\"冰霜术\", -10)  # 这会触发自定义异常\n",
+      "expected_output": "魔力分配: 100 / 5 = 20.0\n魔力分配: 50 / 2 = 25.0\n⚠️ 错误：不能除以零！\n施展 火球术，消耗 30 魔力\n⚠️ 施法失败: 魔力值不能为负数！",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["try", "except", "raise"],
+        "check_execution": true
+      },
+      "hints": [
+        "try 包裹可能出错的代码",
+        "except 捕获特定异常",
+        "raise 主动抛出异常"
+      ],
+      "example_solution": "def divide_mana(a, b):\n    try:\n        result = a / b\n        print(f\"魔力分配: {a} / {b} = {result}\")\n        return result\n    except ZeroDivisionError:\n        print(\"⚠️ 错误：不能除以零！\")\n        return 0\n    except Exception as e:\n        print(f\"⚠️ 未知错误: {e}\")\n        return 0\ndivide_mana(100, 5)\ndivide_mana(50, 2)\ndivide_mana(100, 0)\ndef cast_spell(spell_name, power):\n    try:\n        if power < 0:\n            raise ValueError(\"魔力值不能为负数！\")\n        print(f\"施展 {spell_name}，消耗 {power} 魔力\")\n    except ValueError as e:\n        print(f\"⚠️ 施法失败: {e}\")\ncast_spell(\"火球术\", 30)\ncast_spell(\"冰霜术\", -10)",
+      "xp_reward": 250
+    },
+    {
+      "id": "lesson_7_4",
+      "title": "魔法模块",
+      "concept": "模块导入",
+      "description": "Python模块就像魔法卷轴，导入就能使用强大的功能。",
+      "story": "学习使用各种魔法模块（math、random、datetime）。",
+      "starter_code": "# 导入模块\nimport math\nimport random\nfrom datetime import datetime\n\n# math 模块 - 数学魔法\nprint(\"=== 数学模块 ===\")\nprint(f\"π = {math.pi:.4f}\")\nprint(f\"2的10次方 = {math.pow(2, 10):.0f}\")\nprint(f\"√144 = {math.sqrt(144):.0f}\")\n\n# random 模块 - 随机魔法\nprint(\"\\n=== 随机模块 ===\")\nrandom.seed(42)  # 设置随机种子，保证结果可重复\ndamage = random.randint(10, 50)\nprint(f\"随机伤害: {damage}\")\nelements = [\"火\", \"冰\", \"雷\", \"风\"]\nchosen = random.choice(elements)\nprint(f\"随机元素: {chosen}\")\n\n# datetime 模块 - 时间魔法\nprint(\"\\n=== 时间模块 ===\")\nnow = datetime.now()\nprint(f\"当前时间: {now.strftime('%Y-%m-%d %H:%M:%S')}\")\n",
+      "expected_output": "=== 数学模块 ===\nπ = 3.1416\n2的10次方 = 1024\n√144 = 12\n\n=== 随机模块 ===\n随机伤害: 20\n随机元素: 冰\n\n=== 时间模块 ===\n当前时间: 2026-03-24 22:00:00",
+      "validation": {
+        "type": "pattern",
+        "required_patterns": ["import", "math", "random", "datetime"],
+        "check_execution": false
+      },
+      "hints": [
+        "import 模块名 导入整个模块",
+        "from 模块 import 函数 导入特定函数",
+        "模块.函数() 使用模块的函数"
+      ],
+      "example_solution": "import math\nimport random\nfrom datetime import datetime\nprint(\"=== 数学模块 ===\")\nprint(f\"π = {math.pi:.4f}\")\nprint(f\"2的10次方 = {math.pow(2, 10):.0f}\")\nprint(f\"√144 = {math.sqrt(144):.0f}\")\nprint(\"\\n=== 随机模块 ===\")\nrandom.seed(42)\ndamage = random.randint(10, 50)\nprint(f\"随机伤害: {damage}\")\nelements = [\"火\", \"冰\", \"雷\", \"风\"]\nchosen = random.choice(elements)\nprint(f\"随机元素: {chosen}\")\nprint(\"\\n=== 时间模块 ===\")\nnow = datetime.now()\nprint(f\"当前时间: {now.strftime('%Y-%m-%d %H:%M:%S')}\")",
+      "xp_reward": 250
+    },
+    {
+      "id": "lesson_7_5",
+      "title": "图书管理员毕业",
+      "concept": "JSON数据处理",
+      "description": "JSON是一种常见的数据格式，学会读写JSON文件。",
+      "story": "用JSON格式保存和读取魔法书数据。",
+      "starter_code": "# JSON 数据处理\nimport json\n\n# 魔法书数据\nspellbook = {\n    \"owner\": \"旅行者\",\n    \"level\": 10,\n    \"spells\": [\n        {\"name\": \"火球术\", \"damage\": 50, \"cost\": 20},\n        {\"name\": \"冰霜术\", \"damage\": 40, \"cost\": 15},\n        {\"name\": \"雷电术\", \"damage\": 60, \"cost\": 25}\n    ]\n}\n\n# 转换为JSON字符串\njson_str = json.dumps(spellbook, indent=2, ensure_ascii=False)\nprint(\"=== JSON格式 ===\")\nprint(json_str)\n\n# 从JSON字符串解析\nprint(\"\\n=== 读取数据 ===\")\ndata = json.loads(json_str)\nprint(f\"魔法书主人: {data['owner']}\")\nprint(f\"等级: Lv.{data['level']}\")\nprint(\"已学魔法:\")\nfor spell in data['spells']:\n    print(f\"  - {spell['name']}: 伤害{spell['damage']}, 消耗{spell['cost']}\")\n",
+      "expected_output": "=== JSON格式 ===\n{\n  \"owner\": \"旅行者\",\n  \"level\": 10,\n  \"spells\": [\n    {\n      \"name\": \"火球术\",\n      \"damage\": 50,\n      \"cost\": 20\n    },\n    {\n      \"name\": \"冰霜术\",\n      \"damage\": 40,\n      \"cost\": 15\n    },\n    {\n      \"name\": \"雷电术\",\n      \"damage\": 60,\n      \"cost\": 25\n    }\n  ]\n}\n\n=== 读取数据 ===\n魔法书主人: 旅行者\n等级: Lv.10\n已学魔法:\n  - 火球术: 伤害50, 消耗20\n  - 冰霜术: 伤害40, 消耗15\n  - 雷电术: 伤害60, 消耗25",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["import json", "dumps", "loads"],
+        "check_execution": true
+      },
+      "hints": [
+        "json.dumps() 转成JSON字符串",
+        "json.loads() 从字符串解析",
+        "indent参数美化输出"
+      ],
+      "example_solution": "import json\nspellbook = {\"owner\": \"旅行者\", \"level\": 10, \"spells\": [{\"name\": \"火球术\", \"damage\": 50, \"cost\": 20}, {\"name\": \"冰霜术\", \"damage\": 40, \"cost\": 15}, {\"name\": \"雷电术\", \"damage\": 60, \"cost\": 25}]}\njson_str = json.dumps(spellbook, indent=2, ensure_ascii=False)\nprint(\"=== JSON格式 ===\")\nprint(json_str)\nprint(\"\\n=== 读取数据 ===\")\ndata = json.loads(json_str)\nprint(f\"魔法书主人: {data['owner']}\")\nprint(f\"等级: Lv.{data['level']}\")\nprint(\"已学魔法:\")\nfor spell in data['spells']:\n    print(f\"  - {spell['name']}: 伤害{spell['damage']}, 消耗{spell['cost']}\")",
+      "xp_reward": 300
+    }
+  ]
+}
