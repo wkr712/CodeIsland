@@ -1,0 +1,134 @@
+{
+  "chapter": 4,
+  "chapter_title": "矿工的秘密",
+  "chapter_description": "深入水晶矿洞，学习循环和列表。矿工们用这些技能来处理大量矿石数据，你也能掌握这些强大的工具！",
+  "lessons": [
+    {
+      "id": "lesson_4_1",
+      "title": "数矿石",
+      "concept": "for循环基础",
+      "description": "for循环可以重复执行代码，让我们从数矿石开始。",
+      "story": "矿工拿出一袋矿石，需要数一数有多少颗。",
+      "starter_code": "# 矿石袋\nores = [\"红水晶\", \"蓝宝石\", \"翡翠\", \"钻石\", \"紫水晶\"]\n\n# 用 for 循环数矿石\n# 打印每颗矿石的名字\ncount = 0\nfor ore in ores:\n    # 在这里打印矿石\n    \n    count = count + 1\n\nprint(\"共有\", count, \"颗矿石\")\n",
+      "expected_output": "红水晶\n蓝宝石\n翡翠\n钻石\n紫水晶\n共有 5 颗矿石",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["for", "in", "print"],
+        "check_execution": true
+      },
+      "hints": [
+        "for 变量 in 列表: 遍历列表",
+        "记得缩进循环内的代码",
+        "用 print(ore) 打印每颗矿石"
+      ],
+      "example_solution": "ores = [\"红水晶\", \"蓝宝石\", \"翡翠\", \"钻石\", \"紫水晶\"]\ncount = 0\nfor ore in ores:\n    print(ore)\n    count = count + 1\nprint(\"共有\", count, \"颗矿石\")",
+      "xp_reward": 150
+    },
+    {
+      "id": "lesson_4_2",
+      "title": "range的力量",
+      "concept": "range函数",
+      "description": "range() 可以生成数字序列，配合for循环使用。",
+      "story": "矿工需要给矿石编号，从1到10。",
+      "starter_code": "# 用 range 给矿石编号 1-10\n# 打印：矿石1号、矿石2号...矿石10号\n\nfor i in range(???, ???):\n    print(f\"矿石{i}号\")\n",
+      "expected_output": "矿石1号\n矿石2号\n矿石3号\n矿石4号\n矿石5号\n矿石6号\n矿石7号\n矿石8号\n矿石9号\n矿石10号",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["for", "range"],
+        "check_execution": true
+      },
+      "hints": [
+        "range(1, 11) 生成1到10",
+        "range的结束值不包含在内",
+        "所以 range(1, 11) 是1到10"
+      ],
+      "example_solution": "for i in range(1, 11):\n    print(f\"矿石{i}号\")",
+      "xp_reward": 150
+    },
+    {
+      "id": "lesson_4_3",
+      "title": "累加计算",
+      "concept": "循环累加",
+      "description": "用循环来累加数字，计算总和。",
+      "story": "矿工挖了一周的矿石，记录每天的数量，计算总数。",
+      "starter_code": "# 每天挖矿数量\ndaily_ores = [5, 8, 3, 10, 7, 6, 4]\n\n# 计算总矿石数\ntotal = 0\nfor day_count in daily_ores:\n    # 累加到 total\n    \n\nprint(f\"本周共挖了{total}颗矿石\")\nprint(f\"平均每天{total / 7:.1f}颗\")\n",
+      "expected_output": "本周共挖了43颗矿石\n平均每天6.1颗",
+      "validation": {
+        "type": "output",
+        "expected_output": "本周共挖了43颗矿石\n平均每天6.1颗",
+        "check_execution": true
+      },
+      "hints": [
+        "total = total + day_count 可以简写为 total += day_count",
+        "len(daily_ores) 是列表长度",
+        "除以7或len(daily_ores)都可以"
+      ],
+      "example_solution": "daily_ores = [5, 8, 3, 10, 7, 6, 4]\ntotal = 0\nfor day_count in daily_ores:\n    total += day_count\nprint(f\"本周共挖了{total}颗矿石\")\nprint(f\"平均每天{total / 7:.1f}颗\")",
+      "xp_reward": 200
+    },
+    {
+      "id": "lesson_4_4",
+      "title": "持续挖掘",
+      "concept": "while循环",
+      "description": "while循环会一直执行，直到条件不满足。",
+      "story": "矿工挖矿直到体力耗尽，初始体力100，每次挖矿消耗15体力。",
+      "starter_code": "# 矿工状态\nstamina = 100\nores_collected = 0\n\n# 每次挖矿消耗15体力，获得1颗矿石\n# 当体力 >= 15 时继续挖矿\n# 打印挖矿过程和最终结果\n\nwhile ???:\n    # 消耗体力\n    \n    # 获得矿石\n    \n    print(f\"挖矿中... 体力剩余: {stamina}\")\n\nprint(f\"体力耗尽！共挖了{ores_collected}颗矿石\")\n",
+      "expected_output": "挖矿中... 体力剩余: 85\n挖矿中... 体力剩余: 70\n挖矿中... 体力剩余: 55\n挖矿中... 体力剩余: 40\n挖矿中... 体力剩余: 25\n挖矿中... 体力剩余: 10\n体力耗尽！共挖了6颗矿石",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["while", "print"],
+        "check_execution": true
+      },
+      "hints": [
+        "while stamina >= 15: 当体力够时继续",
+        "stamina -= 15 消耗体力",
+        "ores_collected += 1 增加矿石"
+      ],
+      "example_solution": "stamina = 100\nores_collected = 0\nwhile stamina >= 15:\n    stamina -= 15\n    ores_collected += 1\n    print(f\"挖矿中... 体力剩余: {stamina}\")\nprint(f\"体力耗尽！共挖了{ores_collected}颗矿石\")",
+      "xp_reward": 200
+    },
+    {
+      "id": "lesson_4_5",
+      "title": "列表操作",
+      "concept": "列表方法",
+      "description": "列表有很多有用的方法：append、remove、pop、sort等。",
+      "story": "整理矿石仓库，学习各种列表操作。",
+      "starter_code": "# 矿石仓库\nwarehouse = [\"红水晶\", \"蓝宝石\", \"翡翠\"]\n\n# 添加新矿石\nwarehouse.append(\"钻石\")\nprint(\"添加后:\", warehouse)\n\n# 删除指定矿石\nwarehouse.remove(\"蓝宝石\")\nprint(\"删除后:\", warehouse)\n\n# 弹出最后一个\nlast = warehouse.pop()\nprint(\"弹出:\", last)\nprint(\"剩余:\", warehouse)\n\n# 获取长度和索引\nprint(f\"仓库有{len(warehouse)}种矿石\")\nprint(f\"第一种是{warehouse[0]}\")\n",
+      "expected_output": "",
+      "validation": {
+        "type": "pattern",
+        "required_patterns": ["append", "remove", "pop", "len"],
+        "check_execution": false
+      },
+      "hints": [
+        ".append(元素) 添加到末尾",
+        ".remove(元素) 删除指定元素",
+        ".pop() 弹出最后一个元素"
+      ],
+      "example_solution": "warehouse = [\"红水晶\", \"蓝宝石\", \"翡翠\"]\nwarehouse.append(\"钻石\")\nprint(\"添加后:\", warehouse)\nwarehouse.remove(\"蓝宝石\")\nprint(\"删除后:\", warehouse)\nlast = warehouse.pop()\nprint(\"弹出:\", last)\nprint(\"剩余:\", warehouse)\nprint(f\"仓库有{len(warehouse)}种矿石\")\nprint(f\"第一种是{warehouse[0]}\")",
+      "xp_reward": 200
+    },
+    {
+      "id": "lesson_4_6",
+      "title": "矿石分类",
+      "concept": "列表推导式",
+      "description": "列表推导式可以简洁地创建新列表。",
+      "story": "从矿石列表中筛选出价值超过100的矿石。",
+      "starter_code": "# 矿石及其价值\nores = [\n    {\"name\": \"红水晶\", \"value\": 80},\n    {\"name\": \"蓝宝石\", \"value\": 150},\n    {\"name\": \"翡翠\", \"value\": 120},\n    {\"name\": \"钻石\", \"value\": 500},\n    {\"name\": \"紫水晶\", \"value\": 60}\n]\n\n# 用列表推导式筛选价值 >= 100 的矿石名称\nvaluable_ores = [??? for ore in ores if ???]\n\nprint(\"高价值矿石:\", valuable_ores)\n\n# 计算总价值\ntotal_value = sum([ore[\"value\"] for ore in ores])\nprint(f\"矿石总价值: {total_value}金币\")\n",
+      "expected_output": "高价值矿石: ['蓝宝石', '翡翠', '钻石']\n矿石总价值: 910金币",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["for", "if"],
+        "expected_output": "高价值矿石: ['蓝宝石', '翡翠', '钻石']\n矿石总价值: 910金币",
+        "check_execution": true
+      },
+      "hints": [
+        "[表达式 for 变量 in 列表 if 条件]",
+        "ore[\"name\"] 获取矿石名称",
+        "ore[\"value\"] >= 100 筛选条件"
+      ],
+      "example_solution": "ores = [\n    {\"name\": \"红水晶\", \"value\": 80},\n    {\"name\": \"蓝宝石\", \"value\": 150},\n    {\"name\": \"翡翠\", \"value\": 120},\n    {\"name\": \"钻石\", \"value\": 500},\n    {\"name\": \"紫水晶\", \"value\": 60}\n]\nvaluable_ores = [ore[\"name\"] for ore in ores if ore[\"value\"] >= 100]\nprint(\"高价值矿石:\", valuable_ores)\ntotal_value = sum([ore[\"value\"] for ore in ores])\nprint(f\"矿石总价值: {total_value}金币\")",
+      "xp_reward": 250
+    }
+  ]
+}

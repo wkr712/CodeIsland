@@ -1,0 +1,117 @@
+{
+  "chapter": 3,
+  "chapter_title": "森林迷宫",
+  "chapter_description": "进入神秘的迷雾森林，这里充满了岔路口和谜题。学会使用条件判断，你就能找到正确的道路！",
+  "lessons": [
+    {
+      "id": "lesson_3_1",
+      "title": "岔路口的选择",
+      "concept": "if语句",
+      "description": "在森林中遇到了岔路口，需要根据条件做出选择。if语句让你的程序能够做决定！",
+      "story": "路标显示：如果天气晴朗，走左边；否则走右边。",
+      "starter_code": "# 天气情况\nweather = \"sunny\"\n\n# 使用 if 语句判断\n# 如果天气晴朗(sunny)，打印 \"走左边\"\n# 否则，打印 \"走右边\"\n\n",
+      "expected_output": "走左边",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["if", "else"],
+        "expected_output": "走左边",
+        "check_execution": true
+      },
+      "hints": [
+        "if 条件: 后面要加冒号",
+        "else: 处理其他所有情况",
+        "记得缩进！if和else下面的代码要缩进"
+      ],
+      "example_solution": "weather = \"sunny\"\nif weather == \"sunny\":\n    print(\"走左边\")\nelse:\n    print(\"走右边\")",
+      "xp_reward": 150
+    },
+    {
+      "id": "lesson_3_2",
+      "title": "多重选择",
+      "concept": "elif语句",
+      "description": "有时候不只是两个选择，elif可以处理多个条件。",
+      "story": "商人根据购买数量给不同折扣：10个以上7折，5个以上8折，其他原价。",
+      "starter_code": "# 购买数量\nquantity = 8\n\n# 根据数量计算折扣\n# 10个以上: 打印 \"7折优惠\"\n# 5-9个: 打印 \"8折优惠\"  \n# 其他: 打印 \"原价\"\n\n",
+      "expected_output": "8折优惠",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["if", "elif", "else"],
+        "expected_output": "8折优惠",
+        "check_execution": true
+      },
+      "hints": [
+        "elif 用于多个条件判断",
+        "条件按顺序检查，先到先得",
+        "10个以上用 >= 10"
+      ],
+      "example_solution": "quantity = 8\nif quantity >= 10:\n    print(\"7折优惠\")\nelif quantity >= 5:\n    print(\"8折优惠\")\nelse:\n    print(\"原价\")",
+      "xp_reward": 150
+    },
+    {
+      "id": "lesson_3_3",
+      "title": "逻辑与或非",
+      "concept": "逻辑运算符",
+      "description": "and、or、not 可以组合多个条件。",
+      "story": "进入神秘洞穴需要：持有火把 并且 有地图，或者 有向导带领。",
+      "starter_code": "# 装备状态\nhas_torch = True\nhas_map = True\nhas_guide = False\n\n# 判断能否进入洞穴\n# 条件：(有火把 且 有地图) 或 (有向导)\n# 能进入打印 \"可以进入洞穴\"\n# 不能进入打印 \"需要更多装备\"\n\n",
+      "expected_output": "可以进入洞穴",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["and", "or"],
+        "expected_output": "可以进入洞穴",
+        "check_execution": true
+      },
+      "hints": [
+        "and 表示两个条件都要满足",
+        "or 表示满足任一条件即可",
+        "用括号分组复杂条件"
+      ],
+      "example_solution": "has_torch = True\nhas_map = True\nhas_guide = False\nif (has_torch and has_map) or has_guide:\n    print(\"可以进入洞穴\")\nelse:\n    print(\"需要更多装备\")",
+      "xp_reward": 200
+    },
+    {
+      "id": "lesson_3_4",
+      "title": "嵌套判断",
+      "concept": "嵌套if语句",
+      "description": "if里面还可以套if，处理更复杂的情况。",
+      "story": "冒险者公会招募：先检查等级，等级够了再检查是否有推荐信。",
+      "starter_code": "# 冒险者信息\nlevel = 10\nhas_recommendation = True\n\n# 招募条件：\n# 等级 >= 10 且 有推荐信: \"直接加入\"\n# 等级 >= 10 但 无推荐信: \"需要考试\"\n# 等级 < 10: \"等级不足\"\n\n",
+      "expected_output": "直接加入",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["if", "if"],
+        "expected_output": "直接加入",
+        "check_execution": true
+      },
+      "hints": [
+        "先判断等级",
+        "在等级够的情况下，再判断推荐信",
+        "注意缩进层级"
+      ],
+      "example_solution": "level = 10\nhas_recommendation = True\nif level >= 10:\n    if has_recommendation:\n        print(\"直接加入\")\n    else:\n        print(\"需要考试\")\nelse:\n    print(\"等级不足\")",
+      "xp_reward": 200
+    },
+    {
+      "id": "lesson_3_5",
+      "title": "森林宝箱",
+      "concept": "综合练习",
+      "description": "综合运用条件判断，打开森林中的神秘宝箱！",
+      "story": "宝箱需要密码：密码是3位数，百位是5，个位比百位大3，十位是百位的一半。",
+      "starter_code": "# 破解宝箱密码\n# 提示：密码是3位数\n# 百位 = 5\n# 个位 = 百位 + 3\n# 十位 = 百位 // 2\n\n# 计算密码\npassword = \n\n# 验证密码\nif password == ???:\n    print(\"宝箱打开！获得100金币！\")\nelse:\n    print(\"密码错误！\")\n",
+      "expected_output": "宝箱打开！获得100金币！",
+      "validation": {
+        "type": "output",
+        "expected_output": "宝箱打开！获得100金币！",
+        "check_execution": true
+      },
+      "hints": [
+        "百位是5",
+        "十位 = 5 // 2 = 2",
+        "个位 = 5 + 3 = 8",
+        "密码 = 528"
+      ],
+      "example_solution": "hundreds = 5\ntens = hundreds // 2\nones = hundreds + 3\npassword = hundreds * 100 + tens * 10 + ones\nif password == 528:\n    print(\"宝箱打开！获得100金币！\")\nelse:\n    print(\"密码错误！")",
+      "xp_reward": 250
+    }
+  ]
+}
