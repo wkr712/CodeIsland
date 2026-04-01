@@ -12,6 +12,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.3.0] - 2026-03-24
+
+### Added
+- **Player**: 玩家控制器 (移动、动画、交互、冲刺)
+- **NPC**: NPC系统 (行为模式、对话触发、任务提供)
+- **DialogueSystem**: 对话系统 (加载、显示、选项)
+- **HUD**: 游戏界面 (玩家状态、经验值、任务追踪)
+- **Village**: 新手村场景 (出生点、NPC位置、触发器)
+
+### Scenes
+- `scenes/entities/player.tscn`: 玩家场景
+- `scenes/entities/npc.tscn`: NPC场景
+- `scenes/ui/hud.tscn`: HUD界面
+- `scenes/world/village.tscn`: 新手村场景
+
+### Technical
+- 玩家输入映射: WASD/方向键移动, Shift冲刺, E交互
+- NPC行为: STATIC/PATROL/RANDOM/FOLLOW
+- 对话格式: JSON数据文件
+
+---
+
 ## [0.2.0] - 2026-03-24
 
 ### Added
