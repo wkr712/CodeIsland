@@ -1,0 +1,118 @@
+[gd_scene load_steps=2 format=3 uid="uid://lesson_panel"]
+
+[ext_resource type="Script" path="res://scripts/ui/lesson_panel.gd" id="1_lesson_panel"]
+
+[node name="LessonPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lesson_panel")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -250.0
+offset_right = 300.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="Panel/MarginContainer/VBox"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Panel/MarginContainer/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "课程选择"
+horizontal_alignment = 1
+
+[node name="CloseBtn" type="Button" parent="Panel/MarginContainer/VBox/Header"]
+layout_mode = 2
+text = "X"
+
+[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBox"]
+layout_mode = 2
+
+[node name="ChapterHeader" type="VBoxContainer" parent="Panel/MarginContainer/VBox"]
+layout_mode = 2
+
+[node name="ChapterTitle" type="Label" parent="Panel/MarginContainer/VBox/ChapterHeader"]
+layout_mode = 2
+text = "第1章: 初入代码岛"
+horizontal_alignment = 1
+
+[node name="ChapterDesc" type="RichTextLabel" parent="Panel/MarginContainer/VBox/ChapterHeader"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+bbcode_enabled = true
+text = "章节描述"
+fit_content = true
+
+[node name="ProgressContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBox/ChapterHeader"]
+layout_mode = 2
+
+[node name="ProgressLabel" type="Label" parent="Panel/MarginContainer/VBox/ChapterHeader/ProgressContainer"]
+layout_mode = 2
+text = "进度:"
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel/MarginContainer/VBox/ChapterHeader/ProgressContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 3.0
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/MarginContainer/VBox"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LessonsContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBox/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator3" type="HSeparator" parent="Panel/MarginContainer/VBox"]
+layout_mode = 2
+
+[node name="Navigation" type="HBoxContainer" parent="Panel/MarginContainer/VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="PrevChapter" type="Button" parent="Panel/MarginContainer/VBox/Navigation"]
+layout_mode = 2
+text = "◀ 上一章"
+
+[node name="ChapterIndicator" type="Label" parent="Panel/MarginContainer/VBox/Navigation"]
+layout_mode = 2
+text = "1 / 8"
+
+[node name="NextChapter" type="Button" parent="Panel/MarginContainer/VBox/Navigation"]
+layout_mode = 2
+text = "下一章 ▶"

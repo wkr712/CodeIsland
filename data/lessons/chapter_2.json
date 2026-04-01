@@ -1,0 +1,134 @@
+{
+  "chapter": 2,
+  "chapter_title": "商人的请求",
+  "chapter_description": "来到代码岛的商业区，商人需要你的帮助！学习运算符和字符串操作，帮商人计算价格和处理商品信息。",
+  "lessons": [
+    {
+      "id": "lesson_2_1",
+      "title": "加减乘除",
+      "concept": "算术运算符",
+      "description": "Python可以做各种数学运算。让我们学习加(+)、减(-)、乘(*)、除(/)运算符。",
+      "story": "商人说：\"帮我算算这笔账！苹果3元一个，顾客买了5个，一共多少钱？\"",
+      "starter_code": "# 计算苹果的总价\n# 苹果单价是 3 元，买了 5 个\nprice = 3\nquantity = 5\n\n# 用变量计算总价，存到 total 变量中\n\n# 然后打印结果\n",
+      "expected_output": "15",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["total", "print"],
+        "expected_output": "15",
+        "check_execution": true
+      },
+      "hints": [
+        "乘法使用星号 *",
+        "total = price * quantity",
+        "记得用 print(total) 显示结果"
+      ],
+      "example_solution": "price = 3\nquantity = 5\ntotal = price * quantity\nprint(total)",
+      "xp_reward": 100
+    },
+    {
+      "id": "lesson_2_2",
+      "title": "整数除法",
+      "concept": "整除和取余",
+      "description": "有时候我们需要整数结果。// 是整除，% 是取余（求余数）。",
+      "story": "商人说：\"我有17个金币，要平均分给3个冒险者，每人能分几个？还剩几个？\"",
+      "starter_code": "# 金币总数\ngold = 17\n# 冒险者数量\nadventurers = 3\n\n# 计算每人能分到多少（整除）\neach = \n\n# 计算剩余多少（取余）\nremainder = \n\nprint(\"每人分到:\", each)\nprint(\"剩余:\", remainder)\n",
+      "expected_output": "每人分到: 5\n剩余: 2",
+      "validation": {
+        "type": "output",
+        "expected_output": "每人分到: 5\n剩余: 2",
+        "check_execution": true
+      },
+      "hints": [
+        "整除用 // ，结果是商的整数部分",
+        "取余用 % ，得到余数",
+        "17 // 3 = 5, 17 % 3 = 2"
+      ],
+      "example_solution": "gold = 17\nadventurers = 3\neach = gold // adventurers\nremainder = gold % adventurers\nprint(\"每人分到:\", each)\nprint(\"剩余:\", remainder)",
+      "xp_reward": 150
+    },
+    {
+      "id": "lesson_2_3",
+      "title": "比较大小",
+      "concept": "比较运算符",
+      "description": "比较两个值的大小，结果是True或False。有 ==, !=, >, <, >=, <= 这些运算符。",
+      "story": "商人想比较两种商品的价格，看看哪个更贵。",
+      "starter_code": "# 两种商品的价格\napple_price = 5\nbanana_price = 3\n\n# 判断苹果是否比香蕉贵\nis_apple_expensive = \n\n# 判断价格是否相等\nis_same_price = \n\nprint(\"苹果更贵:\", is_apple_expensive)\nprint(\"价格相同:\", is_same_price)\n",
+      "expected_output": "苹果更贵: True\n价格相同: False",
+      "validation": {
+        "type": "output",
+        "expected_output": "苹果更贵: True\n价格相同: False",
+        "check_execution": true
+      },
+      "hints": [
+        "大于用 >",
+        "相等用 == （两个等号）",
+        "is_apple_expensive = apple_price > banana_price"
+      ],
+      "example_solution": "apple_price = 5\nbanana_price = 3\nis_apple_expensive = apple_price > banana_price\nis_same_price = apple_price == banana_price\nprint(\"苹果更贵:\", is_apple_expensive)\nprint(\"价格相同:\", is_same_price)",
+      "xp_reward": 100
+    },
+    {
+      "id": "lesson_2_4",
+      "title": "字符串拼接",
+      "concept": "字符串连接",
+      "description": "用 + 可以把字符串连接起来，用 * 可以重复字符串。",
+      "story": "商人需要把商品名称和价格组合成一句完整的话。",
+      "starter_code": "# 商品信息\nproduct = \"苹果\"\nprice = 5\n\n# 将数字转换为字符串，然后拼接\n# 提示：str(price) 可以把数字变成字符串\nmessage = \n\nprint(message)\n",
+      "expected_output": "苹果的价格是5元",
+      "validation": {
+        "type": "output",
+        "expected_output": "苹果的价格是5元",
+        "check_execution": true
+      },
+      "hints": [
+        "用 + 连接字符串",
+        "数字需要用 str() 转换成字符串",
+        "message = product + \"的价格是\" + str(price) + \"元\""
+      ],
+      "example_solution": "product = \"苹果\"\nprice = 5\nmessage = product + \"的价格是\" + str(price) + \"元\"\nprint(message)",
+      "xp_reward": 100
+    },
+    {
+      "id": "lesson_2_5",
+      "title": "字符串方法",
+      "concept": "字符串操作",
+      "description": "字符串有很多有用的方法，比如 upper(), lower(), replace(), strip() 等。",
+      "story": "商人收到的订单格式不太规范，需要你来整理。",
+      "starter_code": "# 原始订单（有多余空格）\norder = \"  apple BANANA orange  \"\n\n# 去除首尾空格\nclean_order = order.strip()\n\n# 转换为大写\nupper_order = \n\n# 转换为小写\nlower_order = \n\n# 把 \"banana\" 替换成 \"grape\"\nreplaced_order = clean_order.replace(\"BANANA\", \"grape\")\n\nprint(\"清理后:\", clean_order)\nprint(\"大写:\", upper_order)\nprint(\"小写:\", lower_order)\nprint(\"替换后:\", replaced_order)\n",
+      "expected_output": "清理后: apple BANANA orange\n大写: APPLE BANANA ORANGE\n小写: apple banana orange\n替换后: apple grape orange",
+      "validation": {
+        "type": "output",
+        "expected_output": "清理后: apple BANANA orange\n大写: APPLE BANANA ORANGE\n小写: apple banana orange\n替换后: apple grape orange",
+        "check_execution": true
+      },
+      "hints": [
+        ".upper() 转大写",
+        ".lower() 转小写",
+        ".replace(旧, 新) 替换内容"
+      ],
+      "example_solution": "order = \"  apple BANANA orange  \"\nclean_order = order.strip()\nupper_order = clean_order.upper()\nlower_order = clean_order.lower()\nreplaced_order = clean_order.replace(\"BANANA\", \"grape\")\nprint(\"清理后:\", clean_order)\nprint(\"大写:\", upper_order)\nprint(\"小写:\", lower_order)\nprint(\"替换后:\", replaced_order)",
+      "xp_reward": 150
+    },
+    {
+      "id": "lesson_2_6",
+      "title": "格式化字符串",
+      "concept": "f-string格式化",
+      "description": "使用 f-string 可以更方便地把变量嵌入到字符串中。",
+      "story": "商人想要一个更简洁的方式来生成商品标签。",
+      "starter_code": "# 商品信息\nname = \"魔法药水\"\nprice = 99.9\nquantity = 5\n\n# 使用 f-string 格式化字符串\n# 在字符串前加 f，然后用 {变量名} 插入变量\nlabel = f\"商品: {name}, 单价: {price}元, 库存: {quantity}个\"\n\n# 也可以控制小数位数\ntag = f\"{name}: {price:.1f}元\"  # 保留1位小数\n\nprint(label)\nprint(tag)\n\n# 计算总价并显示\n\n",
+      "expected_output": "商品: 魔法药水, 单价: 99.9元, 库存: 5个\n魔法药水: 99.9元\n总价: 499.5元",
+      "validation": {
+        "type": "output",
+        "expected_output": "商品: 魔法药水, 单价: 99.9元, 库存: 5个\n魔法药水: 99.9元\n总价: 499.5元",
+        "check_execution": true
+      },
+      "hints": [
+        "f\"...{变量}...\" 是 f-string 格式",
+        "{price:.1f} 表示保留1位小数",
+        "计算总价：price * quantity"
+      ],
+      "example_solution": "name = \"魔法药水\"\nprice = 99.9\nquantity = 5\nlabel = f\"商品: {name}, 单价: {price}元, 库存: {quantity}个\"\ntag = f\"{name}: {price:.1f}元\"\nprint(label)\nprint(tag)\nprint(f\"总价: {price * quantity}元\")",
+      "xp_reward": 150
+    }
+  ]
+}
