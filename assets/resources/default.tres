@@ -1,0 +1,13 @@
+[remap]
+
+path="res://assets/sprites/placeholder.png" id="1_placeholder" type="CompressedTexture2D"
+
+[remap]
+
+path="res://assets/audio/placeholder.ogg" id="2_audio" type="AudioStream"
+
+[node name="PlaceholderTexture" type="CompressedTexture2D"]
+path = "res://assets/sprites/placeholder.png"
+
+[node name="PlaceholderAudio" type="AudioStream"]
+path = "res://assets/audio/placeholder.ogg"
