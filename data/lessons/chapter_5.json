@@ -1,0 +1,154 @@
+{
+  "chapter": 5,
+  "chapter_title": "魔法学院",
+  "chapter_description": "进入神秘的魔法学院，学习函数的奥秘。函数就像魔法咒语，封装了强大的力量，让你可以重复使用！",
+  "lessons": [
+    {
+      "id": "lesson_5_1",
+      "title": "第一个咒语",
+      "concept": "函数定义",
+      "description": "函数是一段可以重复使用的代码。用def关键字定义函数。",
+      "story": "魔法导师教你第一个咒语：火球术。",
+      "starter_code": "# 定义火球术函数\ndef fireball():\n    print(\"🔥 释放火球术！\")\n    print(\"造成了 50 点火焰伤害！\")\n\n# 调用函数\nfireball()\nfireball()\n",
+      "expected_output": "🔥 释放火球术！\n造成了 50 点火焰伤害！\n🔥 释放火球术！\n造成了 50 点火焰伤害！",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["def", "fireball()"],
+        "check_execution": true
+      },
+      "hints": [
+        "def 函数名(): 定义函数",
+        "函数体要缩进",
+        "函数名() 调用函数"
+      ],
+      "example_solution": "def fireball():\n    print(\"🔥 释放火球术！\")\n    print(\"造成了 50 点火焰伤害！\")\nfireball()\nfireball()",
+      "xp_reward": 150
+    },
+    {
+      "id": "lesson_5_2",
+      "title": "咒语参数",
+      "concept": "函数参数",
+      "description": "参数让函数更灵活，可以处理不同的输入。",
+      "story": "改进火球术，可以指定威力等级。",
+      "starter_code": "# 定义带参数的火球术\ndef fireball(power):\n    damage = power * 10\n    print(f\"🔥 释放{power}级火球术！\")\n    print(f\"造成了 {damage} 点伤害！\")\n\n# 调用不同威力的火球术\nfireball(3)\nfireball(5)\nfireball(10)\n",
+      "expected_output": "🔥 释放3级火球术！\n造成了 30 点伤害！\n🔥 释放5级火球术！\n造成了 50 点伤害！\n🔥 释放10级火球术！\n造成了 100 点伤害！",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["def", "power"],
+        "check_execution": true
+      },
+      "hints": [
+        "参数写在括号里",
+        "函数内可以用参数变量",
+        "调用时传入具体值"
+      ],
+      "example_solution": "def fireball(power):\n    damage = power * 10\n    print(f\"🔥 释放{power}级火球术！\")\n    print(f\"造成了 {damage} 点伤害！\")\nfireball(3)\nfireball(5)\nfireball(10)",
+      "xp_reward": 200
+    },
+    {
+      "id": "lesson_5_3",
+      "title": "多重参数",
+      "concept": "多参数函数",
+      "description": "函数可以有多个参数，用逗号分隔。",
+      "story": "创建治疗术，需要指定目标和治疗量。",
+      "starter_code": "# 定义治疗术函数\ndef heal(target, amount):\n    print(f\"💚 对 {target} 释放治疗术！\")\n    print(f\"恢复了 {amount} 点生命值！\")\n\n# 测试治疗术\nheal(\"勇者\", 50)\nheal(\"法师\", 80)\nheal(\"队友A\", 30)\n",
+      "expected_output": "💚 对 勇者 释放治疗术！\n恢复了 50 点生命值！\n💚 对 法师 释放治疗术！\n恢复了 80 点生命值！\n💚 对 队友A 释放治疗术！\n恢复了 30 点生命值！",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["def", "target", "amount"],
+        "check_execution": true
+      },
+      "hints": [
+        "多个参数用逗号分隔",
+        "调用时按顺序传入",
+        "参数名要有意义"
+      ],
+      "example_solution": "def heal(target, amount):\n    print(f\"💚 对 {target} 释放治疗术！\")\n    print(f\"恢复了 {amount} 点生命值！\")\nheal(\"勇者\", 50)\nheal(\"法师\", 80)\nheal(\"队友A\", 30)",
+      "xp_reward": 200
+    },
+    {
+      "id": "lesson_5_4",
+      "title": "返回值",
+      "concept": "return语句",
+      "description": "return让函数返回计算结果，可以赋值给变量。",
+      "story": "创建计算伤害的函数，返回最终伤害值。",
+      "starter_code": "# 定义伤害计算函数\ndef calculate_damage(base, critical):\n    if critical:\n        return base * 2\n    else:\n        return base\n\n# 使用返回值\ndmg1 = calculate_damage(50, False)\nprint(f\"普通攻击伤害: {dmg1}\")\n\ndmg2 = calculate_damage(50, True)\nprint(f\"暴击伤害: {dmg2}\")\n\n# 计算总伤害\ntotal = dmg1 + dmg2\nprint(f\"总伤害: {total}\")\n",
+      "expected_output": "普通攻击伤害: 50\n暴击伤害: 100\n总伤害: 150",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["def", "return"],
+        "check_execution": true
+      },
+      "hints": [
+        "return 返回值",
+        "返回值可以赋给变量",
+        "return后函数立即结束"
+      ],
+      "example_solution": "def calculate_damage(base, critical):\n    if critical:\n        return base * 2\n    else:\n        return base\ndmg1 = calculate_damage(50, False)\nprint(f\"普通攻击伤害: {dmg1}\")\ndmg2 = calculate_damage(50, True)\nprint(f\"暴击伤害: {dmg2}\")\ntotal = dmg1 + dmg2\nprint(f\"总伤害: {total}\")",
+      "xp_reward": 250
+    },
+    {
+      "id": "lesson_5_5",
+      "title": "默认参数",
+      "concept": "默认参数值",
+      "description": "参数可以有默认值，调用时可以省略。",
+      "story": "创建魔法攻击函数，有默认的元素类型。",
+      "starter_code": "# 定义带默认参数的魔法攻击\ndef magic_attack(target, element=\"火\", power=50):\n    elements = {\n        \"火\": \"🔥\",\n        \"冰\": \"❄️\",\n        \"雷\": \"⚡\"\n    }\n    emoji = elements.get(element, \"✨\")\n    print(f\"{emoji} 对 {target} 释放{element}系魔法！\")\n    print(f\"造成了 {power} 点伤害！\")\n\n# 测试不同调用方式\nmagic_attack(\"史莱姆\")\nmagic_attack(\"哥布林\", \"冰\")\nmagic_attack(\"巨龙\", \"雷\", 200)\n",
+      "expected_output": "🔥 对 史莱姆 释放火系魔法！\n造成了 50 点伤害！\n❄️ 对 哥布林 释放冰系魔法！\n造成了 50 点伤害！\n⚡ 对 巨龙 释放雷系魔法！\n造成了 200 点伤害！",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["def", "="],
+        "check_execution": true
+      },
+      "hints": [
+        "参数=默认值 设置默认参数",
+        "有默认值的参数可以省略",
+        "默认参数要放在最后"
+      ],
+      "example_solution": "def magic_attack(target, element=\"火\", power=50):\n    elements = {\"火\": \"🔥\", \"冰\": \"❄️\", \"雷\": \"⚡\"}\n    emoji = elements.get(element, \"✨\")\n    print(f\"{emoji} 对 {target} 释放{element}系魔法！\")\n    print(f\"造成了 {power} 点伤害！\")\nmagic_attack(\"史莱姆\")\nmagic_attack(\"哥布林\", \"冰\")\nmagic_attack(\"巨龙\", \"雷\", 200)",
+      "xp_reward": 250
+    },
+    {
+      "id": "lesson_5_6",
+      "title": "递归魔法",
+      "concept": "递归函数",
+      "description": "函数可以调用自己，这就是递归。需要设置终止条件。",
+      "story": "用递归计算阶乘：5! = 5 × 4 × 3 × 2 × 1 = 120",
+      "starter_code": "# 定义阶乘函数（递归）\ndef factorial(n):\n    # 终止条件\n    if n <= 1:\n        return 1\n    # 递归调用\n    return n * factorial(n - 1)\n\n# 测试\nprint(f\"1! = {factorial(1)}\")\nprint(f\"3! = {factorial(3)}\")\nprint(f\"5! = {factorial(5)}\")\nprint(f\"10! = {factorial(10)}\")\n",
+      "expected_output": "1! = 1\n3! = 6\n5! = 120\n10! = 3628800",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["def", "factorial"],
+        "check_execution": true
+      },
+      "hints": [
+        "递归必须有终止条件",
+        "n <= 1 时返回1",
+        "否则返回 n * factorial(n-1)"
+      ],
+      "example_solution": "def factorial(n):\n    if n <= 1:\n        return 1\n    return n * factorial(n - 1)\nprint(f\"1! = {factorial(1)}\")\nprint(f\"3! = {factorial(3)}\")\nprint(f\"5! = {factorial(5)}\")\nprint(f\"10! = {factorial(10)}\")",
+      "xp_reward": 300
+    },
+    {
+      "id": "lesson_5_7",
+      "title": "魔法毕业考",
+      "concept": "综合练习",
+      "description": "综合运用函数知识，完成魔法学院的毕业考试！",
+      "story": "创建一个战斗模拟系统，包含攻击、防御、计算伤害等功能。",
+      "starter_code": "# 魔法学院毕业考试\n# 创建一个完整的战斗系统\n\ndef attack(attacker, defender, damage):\n    \"\"\"执行攻击\"\"\"\n    print(f\"⚔️ {attacker} 攻击 {defender}！\")\n    return damage\n\ndef defend(base_damage, defense):\n    \"\"\"计算防御后的伤害\"\"\"\n    actual = max(0, base_damage - defense)\n    return actual\n\ndef battle_round(attacker, defender, atk, def_val):\n    \"\"\"进行一轮战斗\"\"\"\n    raw_dmg = attack(attacker, defender, atk)\n    final_dmg = defend(raw_dmg, def_val)\n    print(f\"{defender} 受到 {final_dmg} 点伤害！\")\n    return final_dmg\n\n# 模拟战斗\nhp_hero = 100\nhp_monster = 80\n\n# 第一轮：勇者攻击\nhp_monster -= battle_round(\"勇者\", \"巨龙\", 30, 10)\nprint(f\"巨龙剩余HP: {hp_monster}\")\n\n# 第二轮：巨龙反击\nhp_hero -= battle_round(\"巨龙\", \"勇者\", 25, 5)\nprint(f\"勇者剩余HP: {hp_hero}\")\n\nprint(\"\\n=== 战斗结束 ===\")\n",
+      "expected_output": "⚔️ 勇者 攻击 巨龙！\n巨龙 受到 20 点伤害！\n巨龙剩余HP: 60\n⚔️ 巨龙 攻击 勇者！\n勇者 受到 20 点伤害！\n勇者剩余HP: 80\n\n=== 战斗结束 ===",
+      "validation": {
+        "type": "output",
+        "expected_output": "⚔️ 勇者 攻击 巨龙！\n巨龙 受到 20 点伤害！\n巨龙剩余HP: 60\n⚔️ 巨龙 攻击 勇者！\n勇者 受到 20 点伤害！\n勇者剩余HP: 80\n\n=== 战斗结束 ===",
+        "check_execution": true
+      },
+      "hints": [
+        "组合使用多个函数",
+        "注意返回值的处理",
+        "HP要减去实际伤害"
+      ],
+      "example_solution": "def attack(attacker, defender, damage):\n    print(f\"⚔️ {attacker} 攻击 {defender}！\")\n    return damage\ndef defend(base_damage, defense):\n    actual = max(0, base_damage - defense)\n    return actual\ndef battle_round(attacker, defender, atk, def_val):\n    raw_dmg = attack(attacker, defender, atk)\n    final_dmg = defend(raw_dmg, def_val)\n    print(f\"{defender} 受到 {final_dmg} 点伤害！\")\n    return final_dmg\nhp_hero = 100\nhp_monster = 80\nhp_monster -= battle_round(\"勇者\", \"巨龙\", 30, 10)\nprint(f\"巨龙剩余HP: {hp_monster}\")\nhp_hero -= battle_round(\"巨龙\", \"勇者\", 25, 5)\nprint(f\"勇者剩余HP: {hp_hero}\")\nprint(\"\\n=== 战斗结束 ===\")",
+      "xp_reward": 400
+    }
+  ]
+}

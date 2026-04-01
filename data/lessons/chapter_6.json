@@ -1,0 +1,133 @@
+{
+  "chapter": 6,
+  "chapter_title": "宠物驯养师",
+  "chapter_description": "在代码岛的牧场，你将学习面向对象编程。用类来创建你的宠物，让它们拥有属性和行为！",
+  "lessons": [
+    {
+      "id": "lesson_6_1",
+      "title": "认识宠物",
+      "concept": "类与对象",
+      "description": "类是创建对象的蓝图。对象有属性（数据）和方法（行为）。",
+      "story": "创建一个简单的Pet类，代表你的宠物。",
+      "starter_code": "# 定义宠物类\nclass Pet:\n    def __init__(self, name, species):\n        self.name = name\n        self.species = species\n    \n    def introduce(self):\n        print(f\"我是{self.name}，一只{self.species}！\")\n\n# 创建宠物对象\ncat = Pet(\"小橘\", \"猫咪\")\ndog = Pet(\"旺财\", \"狗狗\")\n\n# 调用方法\ncat.introduce()\ndog.introduce()\n",
+      "expected_output": "我是小橘，一只猫咪！\n我是旺财，一只狗狗！",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["class", "def __init__", "self"],
+        "check_execution": true
+      },
+      "hints": [
+        "class 类名: 定义类",
+        "__init__ 是构造函数",
+        "self 代表对象自己"
+      ],
+      "example_solution": "class Pet:\n    def __init__(self, name, species):\n        self.name = name\n        self.species = species\n    def introduce(self):\n        print(f\"我是{self.name}，一只{self.species}！\")\ncat = Pet(\"小橘\", \"猫咪\")\ndog = Pet(\"旺财\", \"狗狗\")\ncat.introduce()\ndog.introduce()",
+      "xp_reward": 200
+    },
+    {
+      "id": "lesson_6_2",
+      "title": "宠物属性",
+      "concept": "实例属性",
+      "description": "每个对象都有自己的属性值。",
+      "story": "给宠物添加更多属性：等级、经验值、生命值。",
+      "starter_code": "# 增强的宠物类\nclass Pet:\n    def __init__(self, name, species):\n        self.name = name\n        self.species = species\n        self.level = 1\n        self.exp = 0\n        self.hp = 100\n        self.max_hp = 100\n    \n    def status(self):\n        print(f\"=== {self.name} ===\")\n        print(f\"种类: {self.species}\")\n        print(f\"等级: Lv.{self.level}\")\n        print(f\"经验: {self.exp}/100\")\n        print(f\"生命: {self.hp}/{self.max_hp}\")\n\n# 创建宠物\ndragon = Pet(\"小火龙\", \"火龙\")\ndragon.exp = 50\ndragon.hp = 80\n\ndragon.status()\n",
+      "expected_output": "=== 小火龙 ===\n种类: 火龙\n等级: Lv.1\n经验: 50/100\n生命: 80/100",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["class", "self."],
+        "check_execution": true
+      },
+      "hints": [
+        "self.属性名 定义实例属性",
+        "每个对象的属性独立",
+        "可以用 对象.属性 修改"
+      ],
+      "example_solution": "class Pet:\n    def __init__(self, name, species):\n        self.name = name\n        self.species = species\n        self.level = 1\n        self.exp = 0\n        self.hp = 100\n        self.max_hp = 100\n    def status(self):\n        print(f\"=== {self.name} ===\")\n        print(f\"种类: {self.species}\")\n        print(f\"等级: Lv.{self.level}\")\n        print(f\"经验: {self.exp}/100\")\n        print(f\"生命: {self.hp}/{self.max_hp}\")\ndragon = Pet(\"小火龙\", \"火龙\")\ndragon.exp = 50\ndragon.hp = 80\ndragon.status()",
+      "xp_reward": 200
+    },
+    {
+      "id": "lesson_6_3",
+      "title": "宠物行动",
+      "concept": "实例方法",
+      "description": "方法定义了对象能做什么。",
+      "story": "给宠物添加行动：攻击、升级、恢复。",
+      "starter_code": "# 宠物行动方法\nclass Pet:\n    def __init__(self, name, attack_power):\n        self.name = name\n        self.attack_power = attack_power\n        self.level = 1\n        self.exp = 0\n    \n    def attack(self, target):\n        print(f\"{self.name} 攻击 {target}！\")\n        print(f\"造成 {self.attack_power} 点伤害！\")\n        self.gain_exp(20)\n    \n    def gain_exp(self, amount):\n        self.exp += amount\n        print(f\"获得 {amount} 经验值！\")\n        if self.exp >= 100:\n            self.level_up()\n    \n    def level_up(self):\n        self.level += 1\n        self.exp = 0\n        self.attack_power += 10\n        print(f\"🎉 {self.name} 升级了！现在是 Lv.{self.level}\")\n\n# 测试\ncat = Pet(\"小橘\", 15)\ncat.attack(\"老鼠\")\ncat.attack(\"老鼠\")\ncat.attack(\"老鼠\")\ncat.attack(\"老鼠\")\ncat.attack(\"老鼠\")\n",
+      "expected_output": "小橘 攻击 老鼠！\n造成 15 点伤害！\n获得 20 经验值！\n小橘 攻击 老鼠！\n造成 15 点伤害！\n获得 20 经验值！\n小橘 攻击 老鼠！\n造成 15 点伤害！\n获得 20 经验值！\n小橘 攻击 老鼠！\n造成 15 点伤害！\n获得 20 经验值！\n小橘 攻击 老鼠！\n造成 15 点伤害！\n获得 20 经验值！\n🎉 小橘 升级了！现在是 Lv.2",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["def", "self."],
+        "check_execution": true
+      },
+      "hints": [
+        "方法内部可以调用其他方法",
+        "self.gain_exp(20) 调用自己的方法",
+        "方法之间通过 self 通信"
+      ],
+      "example_solution": "class Pet:\n    def __init__(self, name, attack_power):\n        self.name = name\n        self.attack_power = attack_power\n        self.level = 1\n        self.exp = 0\n    def attack(self, target):\n        print(f\"{self.name} 攻击 {target}！\")\n        print(f\"造成 {self.attack_power} 点伤害！\")\n        self.gain_exp(20)\n    def gain_exp(self, amount):\n        self.exp += amount\n        print(f\"获得 {amount} 经验值！\")\n        if self.exp >= 100:\n            self.level_up()\n    def level_up(self):\n        self.level += 1\n        self.exp = 0\n        self.attack_power += 10\n        print(f\"🎉 {self.name} 升级了！现在是 Lv.{self.level}\")\ncat = Pet(\"小橘\", 15)\ncat.attack(\"老鼠\")\ncat.attack(\"老鼠\")\ncat.attack(\"老鼠\")\ncat.attack(\"老鼠\")\ncat.attack(\"老鼠\")",
+      "xp_reward": 250
+    },
+    {
+      "id": "lesson_6_4",
+      "title": "宠物家族",
+      "concept": "继承",
+      "description": "子类可以继承父类的属性和方法，并添加自己的特性。",
+      "story": "创建不同种类的宠物，它们有共同的基类。",
+      "starter_code": "# 宠物基类\nclass Pet:\n    def __init__(self, name):\n        self.name = name\n        self.level = 1\n    \n    def speak(self):\n        print(f\"{self.name} 发出声音~\")\n\n# 火龙子类\nclass FireDragon(Pet):\n    def __init__(self, name):\n        super().__init__(name)\n        self.element = \"火\"\n    \n    def speak(self):\n        print(f\"{self.name}: 吼！🔥\")\n    \n    def breathe_fire(self):\n        print(f\"{self.name} 喷出火焰！造成50点火焰伤害！\")\n\n# 冰龙子类\nclass IceDragon(Pet):\n    def __init__(self, name):\n        super().__init__(name)\n        self.element = \"冰\"\n    \n    def speak(self):\n        print(f\"{self.name}: 吼！❄️\")\n    \n    def breathe_ice(self):\n        print(f\"{self.name} 喷出冰霜！造成50点冰冻伤害！\")\n\n# 测试\nfire_dragon = FireDragon(\"小火龙\")\nice_dragon = IceDragon(\"冰灵龙\")\n\nfire_dragon.speak()\nfire_dragon.breathe_fire()\n\nice_dragon.speak()\nice_dragon.breathe_ice()\n",
+      "expected_output": "小火龙: 吼！🔥\n小火龙 喷出火焰！造成50点火焰伤害！\n冰灵龙: 吼！❄️\n冰灵龙 喷出冰霜！造成50点冰冻伤害！",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["class", "(", "super()"],
+        "check_execution": true
+      },
+      "hints": [
+        "class 子类(父类): 继承",
+        "super().__init__() 调用父类构造",
+        "重写方法可以改变行为"
+      ],
+      "example_solution": "class Pet:\n    def __init__(self, name):\n        self.name = name\n        self.level = 1\n    def speak(self):\n        print(f\"{self.name} 发出声音~\")\nclass FireDragon(Pet):\n    def __init__(self, name):\n        super().__init__(name)\n        self.element = \"火\"\n    def speak(self):\n        print(f\"{self.name}: 吼！🔥\")\n    def breathe_fire(self):\n        print(f\"{self.name} 喷出火焰！造成50点火焰伤害！\")\nclass IceDragon(Pet):\n    def __init__(self, name):\n        super().__init__(name)\n        self.element = \"冰\"\n    def speak(self):\n        print(f\"{self.name}: 吼！❄️\")\n    def breathe_ice(self):\n        print(f\"{self.name} 喷出冰霜！造成50点冰冻伤害！")\nfire_dragon = FireDragon(\"小火龙\")\nice_dragon = IceDragon(\"冰灵龙\")\nfire_dragon.speak()\nfire_dragon.breathe_fire()\nice_dragon.speak()\nice_dragon.breathe_ice()",
+      "xp_reward": 300
+    },
+    {
+      "id": "lesson_6_5",
+      "title": "魔法属性",
+      "concept": "类属性和静态方法",
+      "description": "类属性是所有对象共享的，静态方法不需要实例就能调用。",
+      "story": "统计创建的宠物数量，添加宠物类型信息。",
+      "starter_code": "# 带类属性的宠物类\nclass Pet:\n    # 类属性 - 所有宠物共享\n    total_count = 0\n    species_list = []\n    \n    def __init__(self, name, species):\n        self.name = name\n        self.species = species\n        Pet.total_count += 1\n        if species not in Pet.species_list:\n            Pet.species_list.append(species)\n    \n    @staticmethod\n    def get_total():\n        return Pet.total_count\n    \n    @staticmethod\n    def get_species():\n        return Pet.species_list\n\n# 创建多个宠物\ncat = Pet(\"小橘\", \"猫咪\")\ndog = Pet(\"旺财\", \"狗狗\")\ndragon = Pet(\"小火龙\", \"火龙\")\ncat2 = Pet(\"小花\", \"猫咪\")\n\nprint(f\"已创建 {Pet.get_total()} 只宠物\")\nprint(f\"宠物种类: {Pet.get_species()}\")\nprint(f\"{cat.name} 的种类是 {cat.species}\")\n",
+      "expected_output": "已创建 4 只宠物\n宠物种类: ['猫咪', '狗狗', '火龙']\n小橘 的种类是 猫咪",
+      "validation": {
+        "type": "combined",
+        "required_patterns": ["@", "staticmethod"],
+        "check_execution": true
+      },
+      "hints": [
+        "类属性直接定义在类里",
+        "用 类名.类属性 访问",
+        "@staticmethod 定义静态方法"
+      ],
+      "example_solution": "class Pet:\n    total_count = 0\n    species_list = []\n    def __init__(self, name, species):\n        self.name = name\n        self.species = species\n        Pet.total_count += 1\n        if species not in Pet.species_list:\n            Pet.species_list.append(species)\n    @staticmethod\n    def get_total():\n        return Pet.total_count\n    @staticmethod\n    def get_species():\n        return Pet.species_list\ncat = Pet(\"小橘\", \"猫咪\")\ndog = Pet(\"旺财\", \"狗狗\")\ndragon = Pet(\"小火龙\", \"火龙\")\ncat2 = Pet(\"小花\", \"猫咪\")\nprint(f\"已创建 {Pet.get_total()} 只宠物\")\nprint(f\"宠物种类: {Pet.get_species()}\")\nprint(f\"{cat.name} 的种类是 {cat.species}\")",
+      "xp_reward": 250
+    },
+    {
+      "id": "lesson_6_6",
+      "title": "驯养大师",
+      "concept": "综合练习",
+      "description": "综合运用面向对象知识，创建完整的宠物系统！",
+      "story": "创建一个包含宠物管理、战斗、进化的完整系统。",
+      "starter_code": "# 宠物驯养系统\nclass Pet:\n    def __init__(self, name, species, element):\n        self.name = name\n        self.species = species\n        self.element = element\n        self.level = 1\n        self.exp = 0\n        self.hp = 100\n        self.max_hp = 100\n        self.attack = 20\n    \n    def battle(self, other):\n        print(f\"⚔️ {self.name} VS {other.name}!\")\n        while self.hp > 0 and other.hp > 0:\n            other.hp -= self.attack\n            print(f\"{self.name} 攻击！{other.name} HP: {max(0, other.hp)}\")\n            if other.hp <= 0:\n                break\n            self.hp -= other.attack\n            print(f\"{other.name} 反击！{self.name} HP: {max(0, self.hp)}\")\n        \n        if self.hp > 0:\n            print(f\"🏆 {self.name} 获胜！\")\n            self.gain_exp(50)\n            return True\n        else:\n            print(f\"💔 {self.name} 失败...\")\n            self.hp = self.max_hp // 2\n            return False\n    \n    def gain_exp(self, amount):\n        self.exp += amount\n        if self.exp >= 100:\n            self.level += 1\n            self.exp -= 100\n            self.max_hp += 20\n            self.hp = self.max_hp\n            self.attack += 5\n            print(f\"🎉 {self.name} 升级到 Lv.{self.level}!\")\n\n# 创建宠物\npet1 = Pet(\"小火龙\", \"火龙\", \"火\")\npet2 = Pet(\"冰灵龙\", \"冰龙\", \"冰\")\n\n# 战斗\npet1.battle(pet2)\n",
+      "expected_output": "⚔️ 小火龙 VS 冰灵龙!\n小火龙 攻击！冰灵龙 HP: 80\n冰灵龙 反击！小火龙 HP: 80\n小火龙 攻击！冰灵龙 HP: 60\n冰灵龙 反击！小火龙 HP: 60\n小火龙 攻击！冰灵龙 HP: 40\n冰灵龙 反击！小火龙 HP: 40\n小火龙 攻击！冰灵龙 HP: 20\n冰灵龙 反击！小火龙 HP: 20\n小火龙 攻击！冰灵龙 HP: 0\n🏆 小火龙 获胜！\n🎉 小火龙 升级到 Lv.2!",
+      "validation": {
+        "type": "output",
+        "expected_output": "⚔️ 小火龙 VS 冰灵龙!\n小火龙 攻击！冰灵龙 HP: 80\n冰灵龙 反击！小火龙 HP: 80\n小火龙 攻击！冰灵龙 HP: 60\n冰灵龙 反击！小火龙 HP: 60\n小火龙 攻击！冰灵龙 HP: 40\n冰灵龙 反击！小火龙 HP: 40\n小火龙 攻击！冰灵龙 HP: 20\n冰灵龙 反击！小火龙 HP: 20\n小火龙 攻击！冰灵龙 HP: 0\n🏆 小火龙 获胜！\n🎉 小火龙 升级到 Lv.2!",
+        "check_execution": true
+      },
+      "hints": [
+        "组合使用类、方法、属性",
+        "while循环实现战斗",
+        "胜利后获得经验升级"
+      ],
+      "example_solution": "class Pet:\n    def __init__(self, name, species, element):\n        self.name = name\n        self.species = species\n        self.element = element\n        self.level = 1\n        self.exp = 0\n        self.hp = 100\n        self.max_hp = 100\n        self.attack = 20\n    def battle(self, other):\n        print(f\"⚔️ {self.name} VS {other.name}!\")\n        while self.hp > 0 and other.hp > 0:\n            other.hp -= self.attack\n            print(f\"{self.name} 攻击！{other.name} HP: {max(0, other.hp)}\")\n            if other.hp <= 0:\n                break\n            self.hp -= other.attack\n            print(f\"{other.name} 反击！{self.name} HP: {max(0, self.hp)}\")\n        if self.hp > 0:\n            print(f\"🏆 {self.name} 获胜！\")\n            self.gain_exp(50)\n            return True\n        else:\n            print(f\"💔 {self.name} 失败...\")\n            self.hp = self.max_hp // 2\n            return False\n    def gain_exp(self, amount):\n        self.exp += amount\n        if self.exp >= 100:\n            self.level += 1\n            self.exp -= 100\n            self.max_hp += 20\n            self.hp = self.max_hp\n            self.attack += 5\n            print(f\"🎉 {self.name} 升级到 Lv.{self.level}!\")\npet1 = Pet(\"小火龙\", \"火龙\", \"火\")\npet2 = Pet(\"冰灵龙\", \"冰龙\", \"冰\")\npet1.battle(pet2)",
+      "xp_reward": 500
+    }
+  ]
+}
