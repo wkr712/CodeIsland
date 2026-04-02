@@ -1,5 +1,4 @@
 ## 音频管理器
-class_name AudioManager
 extends Node
 
 var bgm_volume: float = 1.0

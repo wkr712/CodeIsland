@@ -42,8 +42,10 @@ func _check_saves() -> void:
 # ==================== 信号处理 ====================
 func _on_new_game_pressed() -> void:
 	print("[MainMenu] 点击新游戏")
-	# 暂时只打印日志
-	print("新游戏功能开发中...")
+	var game_manager = get_node_or_null("/root/GameManager")
+	if game_manager:
+		game_manager.start_new_game()
+	get_tree().change_scene_to_file("res://scenes/world/village.tscn")
 
 
 func _on_continue_pressed() -> void:

@@ -183,13 +183,7 @@ func _connect_signals() -> void:
 
 
 func _check_available_quests() -> void:
-	_has_available_quest = false
-
-	for quest_id in available_quests:
-		if not GameManager.player_data.is_lesson_completed(quest_id):
-			_has_available_quest = true
-			break
-
+	_has_available_quest = not available_quests.is_empty()
 	show_exclamation(_has_available_quest)
 
 

@@ -1,5 +1,4 @@
 ## Python执行器
-class_name PythonExecutor
 extends Node
 
 signal execution_completed(result: Dictionary)

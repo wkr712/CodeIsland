@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <!-- Village Chief NPC - elder with brown robe -->
+  <!-- Head -->
+  <rect x="5" y="1" width="6" height="5" fill="#ffcc99"/>
+  <!-- White hair -->
+  <rect x="5" y="0" width="6" height="3" fill="#cccccc"/>
+  <!-- Eyes -->
+  <rect x="6" y="3" width="1" height="1" fill="#333"/>
+  <rect x="9" y="3" width="1" height="1" fill="#333"/>
+  <!-- Beard -->
+  <rect x="6" y="5" width="4" height="2" fill="#aaaaaa"/>
+  <!-- Body (brown robe) -->
+  <rect x="3" y="6" width="10" height="8" fill="#8b4513"/>
+  <!-- Robe details -->
+  <rect x="7" y="6" width="2" height="8" fill="#6b3510"/>
+  <!-- Walking staff -->
+  <rect x="13" y="4" width="2" height="12" fill="#654321"/>
+  <!-- Staff top -->
+  <rect x="12" y="3" width="4" height="2" fill="#888"/>
+</svg>

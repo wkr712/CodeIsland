@@ -1,5 +1,4 @@
 ## 存档管理器
-class_name SaveManager
 extends Node
 
 const MAX_SAVE_SLOTS := 3

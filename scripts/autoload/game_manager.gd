@@ -1,5 +1,4 @@
 ## 游戏管理器 - 核心单例
-class_name GameManager
 extends Node
 
 # ==================== 信号 ====================
@@ -38,4 +37,5 @@ func _init_player_data() -> void:
 func start_new_game() -> void:
 	print("[GameManager] 开始新游戏")
 	current_state = GameState.PLAYING
+	_init_player_data()
 	emit_signal("game_started")
