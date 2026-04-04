@@ -12,10 +12,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
 
 [node name="VBox" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -23,46 +23,56 @@ layout_mode = 2
 [node name="TopBar" type="HBoxContainer" parent="MarginContainer/VBox"]
 layout_mode = 2
 
-[node name="PlayerInfo" type="HBoxContainer" parent="MarginContainer/VBox/TopBar"]
+[node name="PlayerInfo" type="PanelContainer" parent="MarginContainer/VBox/TopBar"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="HBox" type="HBoxContainer" parent="MarginContainer/VBox/TopBar/PlayerInfo"]
+layout_mode = 2
+
+[node name="Avatar" type="Label" parent="MarginContainer/VBox/TopBar/PlayerInfo/HBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "🧙"
+
+[node name="InfoVBox" type="VBoxContainer" parent="MarginContainer/VBox/TopBar/PlayerInfo/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PlayerName" type="Label" parent="MarginContainer/VBox/TopBar/PlayerInfo"]
+[node name="NameRow" type="HBoxContainer" parent="MarginContainer/VBox/TopBar/PlayerInfo/HBox/InfoVBox"]
 layout_mode = 2
+
+[node name="PlayerName" type="Label" parent="MarginContainer/VBox/TopBar/PlayerInfo/HBox/InfoVBox/NameRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_font_sizes/font_size = 18
 text = "旅行者"
 
-[node name="LevelLabel" type="Label" parent="MarginContainer/VBox/TopBar/PlayerInfo"]
+[node name="LevelLabel" type="Label" parent="MarginContainer/VBox/TopBar/PlayerInfo/HBox/InfoVBox/NameRow"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.85, 0.6, 1)
+theme_override_font_sizes/font_size = 14
 text = "Lv.1"
 
-[node name="XPBar" type="ProgressBar" parent="MarginContainer/VBox/TopBar/PlayerInfo"]
-custom_minimum_size = Vector2(100, 0)
+[node name="XPBar" type="ProgressBar" parent="MarginContainer/VBox/TopBar/PlayerInfo/HBox/InfoVBox"]
+custom_minimum_size = Vector2(100, 8)
 layout_mode = 2
-value = 50.0
+max_value = 100.0
+value = 25.0
+show_percentage = false
 
-[node name="ChapterInfo" type="HBoxContainer" parent="MarginContainer/VBox/TopBar"]
+[node name="ChapterInfo" type="PanelContainer" parent="MarginContainer/VBox/TopBar"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="ChapterLabel" type="Label" parent="MarginContainer/VBox/TopBar/ChapterInfo"]
 layout_mode = 2
-text = "第1章"
-
-[node name="QuestPanel" type="PanelContainer" parent="MarginContainer/VBox"]
-visible = false
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-
-[node name="VBox" type="VBoxContainer" parent="MarginContainer/VBox/QuestPanel"]
-layout_mode = 2
-
-[node name="QuestTitle" type="Label" parent="MarginContainer/VBox/QuestPanel/VBox"]
-layout_mode = 2
-text = "当前任务"
-
-[node name="Objectives" type="VBoxContainer" parent="MarginContainer/VBox/QuestPanel/VBox"]
-layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.7, 0.4, 1)
+theme_override_font_sizes/font_size = 16
+text = "📍 第1章"
+horizontal_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -71,6 +81,10 @@ size_flags_vertical = 3
 [node name="MessageLabel" type="Label" parent="MarginContainer/CenterContainer"]
 visible = false
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
 text = "消息内容"
 horizontal_alignment = 1
 
@@ -78,8 +92,36 @@ horizontal_alignment = 1
 layout_mode = 2
 alignment = 2
 
-[node name="InteractionHint" type="Label" parent="MarginContainer/VBox/BottomBar"]
+[node name="InteractionHint" type="PanelContainer" parent="MarginContainer/VBox/BottomBar"]
 visible = false
 layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="HintLabel" type="Label" parent="MarginContainer/VBox/BottomBar/InteractionHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.5, 1)
+theme_override_font_sizes/font_size = 16
 text = "[E] 交互"
-horizontal_alignment = 2
+
+[node name="QuestPanel" type="PanelContainer" parent="MarginContainer/VBox"]
+visible = false
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/VBox/QuestPanel"]
+layout_mode = 2
+
+[node name="QuestTitle" type="Label" parent="MarginContainer/VBox/QuestPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.8, 0.5, 1)
+theme_override_font_sizes/font_size = 14
+text = "📋 当前任务"
+
+[node name="QuestDesc" type="Label" parent="MarginContainer/VBox/QuestPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_font_sizes/font_size = 12
+text = "与村长对话"
+autowrap_mode = 2

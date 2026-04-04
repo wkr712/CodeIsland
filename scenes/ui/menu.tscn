@@ -18,7 +18,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.1, 0.15, 0.2, 1)
+color = Color(0.08, 0.1, 0.15, 1)
+
+[node name="TopGradient" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 200.0
+grow_horizontal = 2
+color = Color(0.15, 0.25, 0.35, 0.5)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -27,55 +35,97 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -150.0
-offset_right = 150.0
-offset_bottom = 150.0
+offset_left = -200.0
+offset_top = -220.0
+offset_right = 200.0
+offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+[node name="TitleSection" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.3, 0.7, 0.7, 1)
-theme_override_constants/font_size = 48
+alignment = 1
+
+[node name="GameIcon" type="Label" parent="VBoxContainer/TitleSection"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "🏝️"
+horizontal_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/TitleSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.8, 0.9, 1)
+theme_override_colors/font_outline_color = Color(0, 0.2, 0.3, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 52
 text = "代码岛传奇"
 horizontal_alignment = 1
 
-[node name="SubtitleLabel" type="Label" parent="VBoxContainer"]
+[node name="SubtitleLabel" type="Label" parent="VBoxContainer/TitleSection"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
-theme_override_constants/font_size = 18
-text = "Python学习RPG游戏"
+theme_override_colors/font_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_font_sizes/font_size = 18
+text = "Python 学习 RPG 游戏"
 horizontal_alignment = 1
 
 [node name="Spacer" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="MenuButtons" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-separation = 10
+theme_override_constants/separation = 12
+alignment = 1
 
 [node name="NewGameButton" type="Button" parent="VBoxContainer/MenuButtons"]
+custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "新游戏"
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_colors/font_hover_color = Color(0.4, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "🎮  新游戏"
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer/MenuButtons"]
+custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "继续游戏"
+theme_override_colors/font_color = Color(0.5, 0.5, 0.55, 1)
+theme_override_colors/font_hover_color = Color(0.4, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "📂  继续游戏"
+disabled = true
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer/MenuButtons"]
+custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "设置"
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_colors/font_hover_color = Color(0.4, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "⚙️  设置"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer/MenuButtons"]
+custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "退出游戏"
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_colors/font_hover_color = Color(0.4, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "🚪  退出游戏"
+
+[node name="BottomSection" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="ControlsHint" type="Label" parent="VBoxContainer/BottomSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.55, 0.6, 1)
+theme_override_font_sizes/font_size = 14
+text = "WASD/方向键移动  •  E键交互"
+horizontal_alignment = 1
 
 [node name="VersionLabel" type="Label" parent="."]
 layout_mode = 1
@@ -86,24 +136,6 @@ offset_left = -80.0
 offset_top = -30.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
-text = "v0.7.1"
+theme_override_colors/font_color = Color(0.4, 0.45, 0.5, 1)
+text = "v0.8.2"
 horizontal_alignment = 2
-
-[node name="SaveSlotsContainer" type="Control" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SettingsPanel" type="Control" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
