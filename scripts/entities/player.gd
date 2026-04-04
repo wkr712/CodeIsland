@@ -23,7 +23,6 @@ signal direction_changed(new_direction: String)
 @export var deceleration: float = 1000.0
 
 # ==================== 节点引用 ====================
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var interaction_area: Area2D = $InteractionArea
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
@@ -94,10 +93,9 @@ func get_facing_position() -> Vector2:
 
 
 ## 播放动画
-func play_animation(anim_name: String) -> void:
-	if sprite:
-		sprite.play(anim_name)
-		emit_signal("animation_changed", anim_name)
+func play_animation(_anim_name: String) -> void:
+	# 使用简单的ColorRect，无需动画
+	pass
 
 
 # ==================== 私有方法 ====================
@@ -179,19 +177,9 @@ func _update_direction(input_direction: Vector2) -> void:
 		emit_signal("direction_changed", _current_direction)
 
 
-func _update_animation(base_anim: String) -> void:
-	if sprite == null:
-		return
-
-	var anim_name := "%s_%s" % [base_anim, _current_direction]
-
-	# 检查动画是否存在
-	if sprite.sprite_frames and sprite.sprite_frames.has_animation(anim_name):
-		sprite.play(anim_name)
-	else:
-		# 降级到基础动画
-		sprite.play(base_anim)
-
+func _update_animation(_base_anim: String) -> void:
+	# 使用简单的ColorRect，无需动画
+	var anim_name := "%s_%s" % [_base_anim, _current_direction]
 	emit_signal("animation_changed", anim_name)
 
 
