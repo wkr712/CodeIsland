@@ -3,6 +3,13 @@
 class_name Village
 extends Node2D
 
+# ==================== 信号 ====================
+signal dialogue_completed(dialogue_id: String)
+signal quest_accepted(quest_id: String)
+
+# ==================== 预加载 ====================
+const CodeEditorPanelScene = preload("res://scenes/ui/code_editor_panel.tscn")
+
 # ==================== 节点引用 ====================
 @onready var player: CharacterBody2D = $Player
 @onready var camera: Camera2D = $Camera2D
@@ -14,9 +21,18 @@ var _dialogue_panel: PanelContainer = null
 var _speaker_label: Label = null
 var _content_label: Label = null
 var _hint_label: Label = null
+var _code_editor_panel: CodeEditorPanel = null
 
-# ==================== 变量 ====================
+# ==================== 状态变量 ====================
 var _is_dialogue_active: bool = false
+var _dialogue_completed := {}  # 跟踪已完成的对话
+var _current_dialogue_id: String = ""
+var _current_line_index: int = 0
+
+# ==================== 任务状态 ====================
+var _current_quest_id: String = ""
+var _current_lesson_id: String = ""
+var _quest_stage: String = ""  # "", "offered", "accepted", "coding", "completed"
 
 
 # ==================== 生命周期 ====================
@@ -105,8 +121,6 @@ func _create_dialogue_ui() -> void:
 	_speaker_label.name = "SpeakerName"
 	_speaker_label.add_theme_font_size_override("font_size", 22)
 	_speaker_label.add_theme_color_override("font_color", Color(0.4, 0.8, 1.0))
-	_speaker_label.add_theme_color_override("font_outline_color", Color(0, 0, 0))
-	_speaker_label.add_theme_constant_override("outline_size", 2)
 	vbox.add_child(_speaker_label)
 
 	# 对话内容
@@ -114,8 +128,6 @@ func _create_dialogue_ui() -> void:
 	_content_label.name = "Content"
 	_content_label.add_theme_font_size_override("font_size", 18)
 	_content_label.add_theme_color_override("font_color", Color(0.95, 0.95, 0.95))
-	_content_label.add_theme_color_override("font_outline_color", Color(0, 0, 0))
-	_content_label.add_theme_constant_override("outline_size", 1)
 	_content_label.autowrap_mode = TextServer.AUTOWRAP_WORD
 	_content_label.custom_minimum_size.y = 60
 	vbox.add_child(_content_label)
@@ -141,13 +153,36 @@ const DIALOGUES := {
 			"欢迎来到代码岛，年轻的旅行者！",
 			"这里是新手村，你将在这里开始你的 Python 学习之旅。",
 			"我是村长，会引导你完成各种编程任务。",
-			"准备好了吗？让我们开始第一个任务吧！"
-		]
+			"看起来你是个有潜力的程序员。我有个任务要交给你！"
+		],
+		"next_action": "offer_quest"  # 对话完成后的动作
+	},
+	"village_chief_quest": {
+		"speaker": "👴 村长",
+		"lines": [
+			"准备好了吗？让我们开始学习第一个概念：变量！",
+			"点击下面的[开始任务]按钮打开代码编辑器。"
+		],
+		"next_action": "open_code_editor"
+	},
+	"village_chief_wait": {
+		"speaker": "👴 村长",
+		"lines": [
+			"别忘了完成你的任务！去找代码站练习吧。",
+			"代码站就在那边蓝色的位置。"
+		],
+		"next_action": "none"
+	},
+	"village_chief_complete": {
+		"speaker": "👴 村长",
+		"lines": [
+			"太棒了！你完成了第一个任务！",
+			"你现在已经掌握了变量的基本概念。",
+			"继续加油，还有更多精彩的内容等着你！"
+		],
+		"next_action": "none"
 	}
 }
-
-var _current_dialogue_id: String = ""
-var _current_line_index: int = 0
 
 
 # ==================== 信号处理 ====================
@@ -156,12 +191,28 @@ func _on_player_interacted(target: Node) -> void:
 
 	# 检查是否与村长交互
 	if target == village_chief:
-		_start_dialogue("village_chief_intro")
+		_handle_chief_interaction()
 		return
 
 	# 检查目标是否有interact方法
 	if target.has_method("interact"):
 		target.interact(player)
+
+
+func _handle_chief_interaction() -> void:
+	# 根据任务状态决定对话内容
+	if _quest_stage == "completed":
+		# 任务已完成
+		_start_dialogue("village_chief_complete")
+	elif _quest_stage == "accepted" or _quest_stage == "coding":
+		# 任务进行中
+		_start_dialogue("village_chief_wait")
+	elif _dialogue_completed.get("village_chief_intro", false):
+		# 介绍对话已完成，显示任务对话
+		_start_dialogue("village_chief_quest")
+	else:
+		# 首次对话
+		_start_dialogue("village_chief_intro")
 
 
 func _input(event: InputEvent) -> void:
@@ -196,7 +247,125 @@ func _advance_dialogue() -> void:
 	_current_line_index += 1
 
 	if _current_line_index >= dialogue.lines.size():
+		# 对话结束
+		_dialogue_completed[_current_dialogue_id] = true
 		hide_dialogue()
-		_current_dialogue_id = ""
+
+		# 处理对话后的动作
+		_handle_dialogue_complete(_current_dialogue_id, dialogue.get("next_action", "none"))
 	else:
 		_content_label.text = dialogue.lines[_current_line_index]
+
+
+func _handle_dialogue_complete(dialogue_id: String, next_action: String) -> void:
+	match next_action:
+		"offer_quest":
+			# 提供任务
+			_show_quest_offer()
+		"open_code_editor":
+			# 打开代码编辑器
+			_open_code_editor()
+		"none":
+			# 无动作
+			pass
+
+
+func _show_quest_offer() -> void:
+	# 显示任务提示
+	_show_message("📋 新任务：村长的委托 - 学习变量概念", 3.0)
+	_quest_stage = "offered"
+
+	# 更新HUD显示任务
+	_update_hud_quest("村长的委托", "前往代码站学习变量")
+
+
+func _show_message(text: String, duration: float = 3.0) -> void:
+	# 通过HUD显示消息
+	if hud and hud.has_method("show_message"):
+		hud.show_message(text, duration)
+
+
+func _update_hud_quest(title: String, description: String) -> void:
+	if hud and hud.has_method("set_current_quest"):
+		hud.set_current_quest(title, description)
+
+
+func _open_code_editor() -> void:
+	_quest_stage = "coding"
+	_current_lesson_id = "lesson_1_1"
+	print("[Village] 打开代码编辑器")
+
+	# 创建或显示代码编辑器
+	if _code_editor_panel == null:
+		_code_editor_panel = CodeEditorPanelScene.instantiate()
+		_code_editor_panel.lesson_completed.connect(_on_lesson_completed)
+		_code_editor_panel.editor_closed.connect(_on_code_editor_closed)
+		add_child(_code_editor_panel)
+
+	# 加载课程数据
+	var lesson_data = _load_lesson(_current_lesson_id)
+	_code_editor_panel.load_lesson(lesson_data)
+
+	# 禁用玩家移动
+	if player.has_method("disable_movement"):
+		player.disable_movement()
+
+
+func _load_lesson(lesson_id: String) -> Dictionary:
+	# 加载课程JSON数据
+	var file_path = "res://data/lessons/chapter_1.json"
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	if file == null:
+		print("[Village] 无法加载课程文件")
+		return {}
+
+	var json_text = file.get_as_text()
+	file.close()
+
+	var json = JSON.new()
+	var parse_result = json.parse(json_text)
+	if parse_result != OK:
+		print("[Village] JSON解析错误")
+		return {}
+
+	var data = json.data
+	for lesson in data.get("lessons", []):
+		if lesson.get("id") == lesson_id:
+			return lesson
+
+	return {}
+
+
+func _on_lesson_completed(lesson_id: String) -> void:
+	print("[Village] 课程完成: ", lesson_id)
+	complete_quest()
+
+
+func _on_code_editor_closed() -> void:
+	# 启用玩家移动
+	if player.has_method("enable_movement"):
+		player.enable_movement()
+
+
+## 接受任务
+func accept_quest() -> void:
+	_quest_stage = "accepted"
+	_current_quest_id = "quest_1_1"
+	emit_signal("quest_accepted", _current_quest_id)
+
+
+## 完成任务
+func complete_quest() -> void:
+	_quest_stage = "completed"
+	_show_message("🎉 任务完成！获得 100 经验值", 3.0)
+
+	# 更新玩家数据
+	var game_manager = get_node_or_null("/root/GameManager")
+	if game_manager and game_manager.player_data:
+		game_manager.player_data["xp"] = game_manager.player_data.get("xp", 0) + 100
+
+	# 更新HUD
+	if hud and hud.has_method("update_player_info"):
+		hud.update_player_info()
+	if hud and hud.has_method("clear_quest_display"):
+		hud.clear_quest_display()
