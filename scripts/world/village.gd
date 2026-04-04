@@ -4,10 +4,10 @@ class_name Village
 extends Node2D
 
 # ==================== 节点引用 ====================
-@onready var player: Player = $Player
+@onready var player: CharacterBody2D = $Player
 @onready var camera: Camera2D = $Camera2D
-@onready var village_chief: NPC = $Entities/NPCs/VillageChief
-@onready var hud: HUD = $HUD
+@onready var village_chief: CharacterBody2D = $Entities/NPCs/VillageChief
+@onready var hud: CanvasLayer = $HUD
 
 # ==================== 变量 ====================
 var _dialogue_ui: Control = null
@@ -135,7 +135,7 @@ func _on_npc_interacted(npc: Node) -> void:
 		_start_dialogue("village_chief_intro")
 
 
-func _on_npc_dialogue_started(_npc: NPC) -> void:
+func _on_npc_dialogue_started(_npc: CharacterBody2D) -> void:
 	# 对话开始时的处理
 	pass
 

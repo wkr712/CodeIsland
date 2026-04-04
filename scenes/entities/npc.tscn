@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://npc_entity"]
+[gd_scene load_steps=3 format=3 uid="uid://npc_entity"]
 
 [ext_resource type="Script" path="res://scripts/entities/npc.gd" id="1_npc"]
-[ext_resource type="SpriteFrames" path="res://assets/sprites/characters/npc_villager.tres" id="2_frames"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_npc"]
 radius = 14.0
@@ -15,11 +14,33 @@ script = ExtResource("1_npc")
 position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_npc")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -6)
-scale = Vector2(2, 2)
-sprite_frames = ExtResource("2_frames")
-animation = &"idle_down"
+[node name="BodySprite" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = 8.0
+color = Color(0.55, 0.27, 0.07, 1)
+
+[node name="HeadSprite" type="ColorRect" parent="."]
+offset_left = -7.0
+offset_top = -28.0
+offset_right = 7.0
+offset_bottom = -16.0
+color = Color(1, 0.8, 0.6, 1)
+
+[node name="HairSprite" type="ColorRect" parent="."]
+offset_left = -8.0
+offset_top = -32.0
+offset_right = 8.0
+offset_bottom = -26.0
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="StaffSprite" type="ColorRect" parent="."]
+offset_left = 10.0
+offset_top = -24.0
+offset_right = 14.0
+offset_bottom = 12.0
+color = Color(0.4, 0.26, 0.13, 1)
 
 [node name="InteractionArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -37,9 +58,14 @@ offset_bottom = -30.0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Exclamation" type="Sprite2D" parent="."]
-position = Vector2(0, -45)
-scale = Vector2(0.3, 0.3)
+[node name="Exclamation" type="Label" parent="."]
+offset_left = -10.0
+offset_top = -60.0
+offset_right = 10.0
+offset_bottom = -45.0
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_player_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_player_exited"]

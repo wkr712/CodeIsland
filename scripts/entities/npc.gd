@@ -56,11 +56,10 @@ enum NPCBehavior {
 @export var wait_time_range: Vector2 = Vector2(2.0, 5.0)
 
 # ==================== 节点引用 ====================
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var interaction_area: Area2D = $InteractionArea
 @onready var name_label: Label = $NameLabel
-@onready var exclamation: Sprite2D = $Exclamation
+@onready var exclamation: Label = $Exclamation
 
 # ==================== 变量 ====================
 var _state: NPCState = NPCState.IDLE
@@ -139,19 +138,19 @@ func face_direction(direction: String) -> void:
 
 
 ## 播放动画
-func play_animation(anim_name: String) -> void:
-	if sprite:
-		var full_anim := "%s_%s" % [anim_name, _current_direction]
-		if sprite.sprite_frames and sprite.sprite_frames.has_animation(full_anim):
-			sprite.play(full_anim)
-		else:
-			sprite.play(anim_name)
+func play_animation(_anim_name: String) -> void:
+	# 使用简单的ColorRect，无需动画
+	pass
 
 
 ## 显示/隐藏感叹号
 func show_exclamation(show: bool) -> void:
 	if exclamation:
 		exclamation.visible = show
+		if show:
+			exclamation.text = "!"
+		else:
+			exclamation.text = ""
 
 
 ## 检查是否有可用任务
@@ -177,9 +176,8 @@ func _setup_npc() -> void:
 
 
 func _connect_signals() -> void:
-	if interaction_area:
-		interaction_area.body_entered.connect(_on_player_entered)
-		interaction_area.body_exited.connect(_on_player_exited)
+	# 信号已在场景中连接，无需重复连接
+	pass
 
 
 func _check_available_quests() -> void:
@@ -261,14 +259,9 @@ func _face_toward(target_position: Vector2) -> void:
 	_update_animation("idle")
 
 
-func _update_animation(base_anim: String) -> void:
-	if sprite == null:
-		return
-
-	var anim_name := "%s_%s" % [base_anim, _current_direction]
-
-	if sprite.sprite_frames and sprite.sprite_frames.has_animation(anim_name):
-		sprite.play(anim_name)
+func _update_animation(_base_anim: String) -> void:
+	# 使用简单的ColorRect，无需动画
+	pass
 
 
 func _start_dialogue() -> void:

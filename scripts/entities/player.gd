@@ -111,9 +111,8 @@ func _setup_player() -> void:
 
 
 func _connect_signals() -> void:
-	if interaction_area:
-		interaction_area.body_entered.connect(_on_interaction_area_body_entered)
-		interaction_area.body_exited.connect(_on_interaction_area_body_exited)
+	# 信号已在场景中连接，无需重复连接
+	pass
 
 
 func _handle_movement(delta: float) -> void:
@@ -228,7 +227,7 @@ func _on_interaction_area_body_entered(body: Node2D) -> void:
 
 		# 显示交互提示
 		if body.has_method("get_interaction_hint"):
-			var hint := body.get_interaction_hint()
+			var hint: String = body.get_interaction_hint()
 			# TODO: 显示UI提示
 
 
