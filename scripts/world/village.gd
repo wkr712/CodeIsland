@@ -21,7 +21,7 @@ var _dialogue_panel: PanelContainer = null
 var _speaker_label: Label = null
 var _content_label: Label = null
 var _hint_label: Label = null
-var _code_editor_panel: CodeEditorPanel = null
+var _code_editor_panel: Control = null
 
 # ==================== 状态变量 ====================
 var _is_dialogue_active: bool = false
